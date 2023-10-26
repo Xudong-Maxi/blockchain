@@ -21,12 +21,4 @@ export const GlobalToolBar = () => {
             <Link to = "/blockchain/history">History</Link>
         </div>
     )
-
-    //<Link to = "/InterfaceDemo">Login</Link>
-    //&nbsp;|&nbsp;
-    //<Link to = "/InterfaceDemo/profile">Profile</Link>
-    //&nbsp;|&nbsp;
-    //<Link to = "/InterfaceDemo/storage">Storage</Link>
-    //&nbsp;|&nbsp;
-    //<Link to = "/InterfaceDemo/history">History</Link>
 }

@@ -77,7 +77,6 @@ export default function App() {
             setBalance(bal);
             setIsConnected(true);
 
-            //navigate('/InterfaceDemo/profile');
             navigate('/blockchain/profile');
         }
         catch (error){
@@ -244,13 +243,5 @@ export default function App() {
             </div>
         // </BrowserRouter>
     );
-                    // <Route path = "/InterfaceDemo" element = {<Login isHaveMetamask = {haveMetamask} connectTo = {connectWallet} />}></Route>
-                    // <Route path = "/InterfaceDemo/profile" element = {<ProfileDisplay/>}></Route>
-                    // <Route path = "/InterfaceDemo/storage" element = {<StorageDisplay/>}></Route>
-                    // <Route path = "/InterfaceDemo/history" element = {<HistoryDisplay/>}></Route>
-                    //<Route path = "/blockchain" element = {<Login isHaveMetamask = {haveMetamask} connectTo = {connectWallet} />}></Route>
-                    //<Route path = "/blockchain/profile" element = {<ProfileDisplay/>}></Route>
-                    //<Route path = "/blockchain/storage" element = {<StorageDisplay/>}></Route>
-                    //<Route path = "/blockchain/history" element = {<HistoryDisplay/>}></Route>
 }
 
