@@ -1,18 +1,5 @@
-export const CONTRACT_ADDRESS = "0x3eEFD9570b08c9eb616D87EF28fb2A8C612f8B1F"//"0x9870584D6d8ca73580347391Ad57E577641654C6";
+export const CONTRACT_ADDRESS = "0x3c49f8052A1009Fd8fEdb2b87500B96614a92CE8";//"0x9870584D6d8ca73580347391Ad57E577641654C6";
 export const CONTRACT_ABI = [
-	{
-		"inputs": [],
-		"name": "get",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
 	{
 		"inputs": [
 			{
@@ -24,6 +11,19 @@ export const CONTRACT_ABI = [
 		"name": "set",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "get",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	}
 ];
