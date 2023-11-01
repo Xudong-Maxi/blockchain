@@ -14,7 +14,7 @@ export const GlobalToolBar = () => {
         <div className = "global-toolbar">
             <Link to = "/blockchain">Login</Link>
             &nbsp;|&nbsp;
-            <Link to = "/blockchain/profile">Profile</Link>
+            <Link to = "/blockchain/types">Profile</Link>
             &nbsp;|&nbsp;
             <Link to = "/blockchain/storage">Storage</Link>
             &nbsp;|&nbsp;

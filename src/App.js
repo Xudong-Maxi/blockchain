@@ -1,15 +1,20 @@
-import {Routes, Route} from "react-router-dom";
-import {useNavigate} from "react-router-dom";
+import {Routes, Route, Switch, Router} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import {useState} from 'react';
 import {ethers} from 'ethers';
 import Web3 from "web3";
 
 import './App.css';
-import Login from "./components/login/login";
+import Login from "./pages/login/login";
 import Profile from "./components/profile/profile";
 import Storage from "./components/storage/storage";
 import History from "./components/history/history";
+import Types from "./pages/Types";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "./contracts/config";
+
+import GlobalContext from "./providers/GlobalContext";
+import { defaultGlobal } from "./providers/dataGlobal";
+import Header from "./components/Header";
 
 export default function App() {
     const [haveMetamask, setHaveMetamask] = useState(true);     // check if the browser has MetaMask installed. 
@@ -32,6 +37,15 @@ export default function App() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const web3 = new Web3(Web3.givenProvider || "https://localhost:8545");
     const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+
+    // Pokemon 
+    const [dataGlobal, setDataGlobal] = useState(defaultGlobal);
+    const setData = (data) => {
+        setDataGlobal({ ...dataGlobal, ...data });
+    };
+
+    const location = useLocation();
+    const shouldShowHeader = location.pathname !== '/blockchain';
 
     // useEffect(() => {
     //     const { ethereum } = window;
@@ -77,7 +91,7 @@ export default function App() {
             setBalance(bal);
             setIsConnected(true);
 
-            navigate('/blockchain/profile');
+            navigate('/blockchain/types');
         }
         catch (error){
             setIsConnected(false);
@@ -230,18 +244,25 @@ export default function App() {
         )
     }
 
-
+    // display types page
+    const TypesDisplay = () => {
+        return (
+            <Types/>
+        )
+    }
     return (
-        // <BrowserRouter>
-            <div className="App">
+        <div className="App">
+            <GlobalContext.Provider value={{ setData, dataGlobal }}>
+                {shouldShowHeader && <Header />}
                 <Routes>
                     <Route path = "/blockchain" element = {<Login isHaveMetamask = {haveMetamask} connectTo = {connectWallet} />}></Route>
+                    <Route path = "/blockchain/types" element = {<TypesDisplay/>}></Route>
                     <Route path = "/blockchain/profile" element = {<ProfileDisplay/>}></Route>
                     <Route path = "/blockchain/storage" element = {<StorageDisplay/>}></Route>
                     <Route path = "/blockchain/history" element = {<HistoryDisplay/>}></Route>
                 </Routes>
-            </div>
-        // </BrowserRouter>
+            </GlobalContext.Provider>
+        </div>
     );
 }
 
