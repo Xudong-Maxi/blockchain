@@ -52,7 +52,7 @@ const Types = () => {
 
 			<ul className={classes.ul}>
 				{types.map(({ bg, img, name }) => (
-					<Link to={`${pathname}${name}`} key={name}>
+					<Link to={`${pathname}/${name}`} key={name}>
 						<li
 							key={name}
 							className={classes.li}

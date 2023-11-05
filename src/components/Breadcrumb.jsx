@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { createUseStyles } from "react-jss";
 import PropTypes from "prop-types";
 
+// List of 
 const useStyles = createUseStyles({
 	ul: {
 		padding: "0.5em 1em",
@@ -48,7 +49,7 @@ const useStyles = createUseStyles({
 });
 
 function Breadcrumb({ pathname, list }) {
-	const classes = useStyles();
+	const classes = useStyles();	
 
 	return (
 		<div className={classes.container}>

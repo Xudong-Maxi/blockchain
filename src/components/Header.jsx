@@ -16,7 +16,7 @@ function Header() {
 	const [path, getPath] = useState([]);
 
 	useEffect(() => {
-		let arrPath = [
+		let arrPath = [ //initiate path array // breadcrumb
 			{
 				name: "Login",
 				url: "/blockchain",
@@ -24,20 +24,24 @@ function Header() {
 		];
 		const path = pathname;
 		const s = path.split("/");
+		let url = "/blockchain"
 
-		for (let i = 2; i < s.length; i++) {
+
+		for (let i = 2; i < s.length; i++) {  // iteration, append value to array
+			url += `/${s[i]}`;
 			arrPath.push({
 				name: s[i],
-				url: path.substring(0, `${path.indexOf(`/${s[i]}`)}${s[i].length + 1}`),
+				url: url, 
 			});
 		}
 
 		getPath(arrPath);
 	}, [pathname]);
 
+
 	return (
 		<div className={classes.container}>
-			<Breadcrumb list={path} pathname={pathname} />
+			<Breadcrumb list={path} pathname={pathname} /> 
 		</div>
 	);
 }
