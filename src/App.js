@@ -18,6 +18,7 @@ import GlobalContext from "./providers/GlobalContext";
 import { defaultGlobal } from "./providers/dataGlobal";
 import Header from "./components/Header";
 import { zeroPad } from "ethers/lib/utils";
+import Inventory from "./pages/Inventory";
 
 export default function App() {
     const [haveMetamask, setHaveMetamask] = useState(true);     // check if the browser has MetaMask installed. 
@@ -268,6 +269,12 @@ export default function App() {
         )
     }
 
+    const InventoryDisplay = () => {
+        return (
+            <Inventory/>
+        )
+    }
+
     return (
         <div className="App">
             <GlobalContext.Provider value={{ setData, dataGlobal }}>
@@ -277,6 +284,7 @@ export default function App() {
                     <Route path = "/blockchain/Types" element = {<TypesDisplay/>}></Route>
                     <Route path = "/blockchain/Types/:type" element = {<CardsDisplay/>}></Route>
                     <Route path = "/blockchain/Types/:type/:id" element = {<CardDisplay/>}></Route>
+                    <Route path = "/blockchain/Inventory" element = {<InventoryDisplay/>}></Route>
                     {/* <Route path = "/blockchain/profile" element = {<ProfileDisplay/>}></Route>
                     <Route path = "/blockchain/storage" element = {<StorageDisplay/>}></Route>
                     <Route path = "/blockchain/history" element = {<HistoryDisplay/>}></Route> */}
