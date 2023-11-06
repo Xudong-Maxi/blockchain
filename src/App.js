@@ -17,6 +17,7 @@ import { CONTRACT_ABI, CONTRACT_ADDRESS } from "./contracts/config";
 import GlobalContext from "./providers/GlobalContext";
 import { defaultGlobal } from "./providers/dataGlobal";
 import Header from "./components/Header";
+import { zeroPad } from "ethers/lib/utils";
 
 export default function App() {
     const [haveMetamask, setHaveMetamask] = useState(true);     // check if the browser has MetaMask installed. 
@@ -42,12 +43,12 @@ export default function App() {
 
     // Pokemon set global data
     const [dataGlobal, setDataGlobal] = useState(defaultGlobal);
-    const setData = (data) => {
+    const setData = (data) => {  // set function of updating global data
         setDataGlobal({ ...dataGlobal, ...data });
     };
 
     const location = useLocation();
-    const shouldShowHeader = location.pathname !== '/blockchain'; 
+    const shouldShowHeader = (location.pathname !== '/blockchain/') && (location.pathname !== '/blockchain');  // don't show header in login page
 
     // useEffect(() => {
     //     const { ethereum } = window;
@@ -249,7 +250,8 @@ export default function App() {
     // display types page
     const TypesDisplay = () => {
         return (
-            <Types/>
+            <Types
+            />
         )
     }
 
@@ -275,9 +277,9 @@ export default function App() {
                     <Route path = "/blockchain/Types" element = {<TypesDisplay/>}></Route>
                     <Route path = "/blockchain/Types/:type" element = {<CardsDisplay/>}></Route>
                     <Route path = "/blockchain/Types/:type/:id" element = {<CardDisplay/>}></Route>
-                    <Route path = "/blockchain/profile" element = {<ProfileDisplay/>}></Route>
+                    {/* <Route path = "/blockchain/profile" element = {<ProfileDisplay/>}></Route>
                     <Route path = "/blockchain/storage" element = {<StorageDisplay/>}></Route>
-                    <Route path = "/blockchain/history" element = {<HistoryDisplay/>}></Route>
+                    <Route path = "/blockchain/history" element = {<HistoryDisplay/>}></Route> */}
                 </Routes>
             </GlobalContext.Provider>
         </div>
