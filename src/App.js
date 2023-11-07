@@ -270,18 +270,6 @@ export default function App() {
         )
     }
 
-    const InventoryDisplay = () => {
-        return (
-            <Inventory/>
-        )
-    }
-
-    const SellingDisplay = () => {
-        return (
-            <Selling/>
-        )
-    }
-
     return (
         <div className="App">
             <GlobalContext.Provider value={{ setData, dataGlobal }}>
