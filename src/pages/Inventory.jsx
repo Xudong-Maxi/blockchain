@@ -1,3 +1,5 @@
+import './login/login.css';
+import '../global.css';
 import React, { Fragment } from "react";
 import { Link, useParams, useLocation, Navigate } from "react-router-dom";
 import { createUseStyles } from "react-jss";
@@ -45,27 +47,28 @@ const useStyles = createUseStyles({  // define style of list (display cards)
 });
 
 
-// const UsersItemsList = ({ items }) => {
-// 	return (
-// 	  <div>
-// 		<h2>Users' Items</h2>
-// 		<ul>
-// 		  {items.map((item) => (
-// 			<li key={item.id}>
-// 			  <strong>ID:</strong> {item.id}, <strong>Name:</strong> {item.name},{" "}
-// 			  <strong>Price:</strong> {item.price}, <strong>Status:</strong>{" "}
-// 			  {item.status}
-// 			</li>
-// 		  ))}
-// 		</ul>
-// 	  </div>
-// 	);
-// };
+const UsersItemsList = ({ items }) => {
+	return (
+	  <div>
+		<h2>Users' Items</h2>
+		<ul>
+		  {items.map((item) => (
+			<li key={item.id}>
+			  <strong>ID:</strong> {item.id}, <strong>Name:</strong> {item.name},{" "}
+			  <strong>Price:</strong> {item.price}, <strong>Status:</strong>{" "}
+			  {item.status}
+			</li>
+		  ))}
+		</ul>
+	  </div>
+	);
+};
 
 const Inventory = () => {
 	const { type } = useParams();
 	const { pathname } = useLocation();
 	const classes = useStyles();
+	console.log(type);
 	const {
 		title: { bg, img },
 		cards,
@@ -76,11 +79,11 @@ const Inventory = () => {
 
 
 	// Sample items data (you need to replace this with your actual data)
-	// const usersItems = [
-	// 	{ id: 1, name: "Item 1", price: 10, status: "In Stock" },
-	// 	{ id: 2, name: "Item 2", price: 20, status: "Out of Stock" },
-	// 	// Add more items here
-	// ];
+	const usersItems = [
+		{ id: 1, name: "Item 1", price: 10, status: "In Stock" },
+		{ id: 2, name: "Item 2", price: 20, status: "Out of Stock" },
+		// Add more items here
+	];
 	// Fetch the list of users' items (you need to implement this)
 	//const usersItems = getUsersItems();
 	
@@ -104,6 +107,12 @@ const Inventory = () => {
 				<Icon bg={bg} size="medium" name={type} img={img} />
 			</Title>
 
+            <Link to={`/blockchain/Types/Selling/${type}`} key={type}>
+				<button className = "Selling">
+						Cards that are selling
+				</button>
+			</Link>
+			
 			<ul className={classes.ul}>
 				{cards.map(({ id, name, imageUrl }) => (
 					<Link to={`${pathname}/${id}`} key={id}>
@@ -119,7 +128,7 @@ const Inventory = () => {
 				))}
 			</ul>
 
-			{/* <UsersItemsList items={usersItems} /> */}
+			<UsersItemsList items={usersItems} />
 
 			{moreLoading && <Loading color={bg} />}
 			{!moreLoading && !isFinal && (
