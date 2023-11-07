@@ -13,6 +13,9 @@ import Title from "../components/Title";
 
 import useCards from "../hooks/useCards";
 
+//import PopupSell from "../components/popup/PopupSell"
+import PopupSell from "../components/PopupSell"
+
 const useStyles = createUseStyles({  // define style of list (display cards)
 	ul: {
 		display: "flex",
@@ -32,9 +35,23 @@ const useStyles = createUseStyles({  // define style of list (display cards)
 	li: {
 		margin: "0.25rem",
 		padding: "0.5rem",
+		// transition: "0.2s all",
+		// "&:hover": {
+		// 	transform: "scale(1.1)",
+		// 	cursor: "pointer",
+		// },
+	},
+	cardHover:{
 		transition: "0.2s all",
 		"&:hover": {
 			transform: "scale(1.1)",
+			cursor: "pointer",
+		},
+	},
+	popupHover:{
+		transition: "0.2s all",
+		"&:hover": {
+			transform: "scale(1.2)",
 			cursor: "pointer",
 		},
 	},
@@ -64,10 +81,11 @@ const UsersItemsList = ({ items }) => {
 	);
 };
 
-const Inventory = () => {
-	const { type } = useParams();
+const Inventory = (props) => {
+	//const { type } = useParams();
 	const { pathname } = useLocation();
 	const classes = useStyles();
+	const type = props.type;
 	console.log(type);
 	const {
 		title: { bg, img },
@@ -76,6 +94,9 @@ const Inventory = () => {
 		nextPage,
 		moreLoading,
 	} = useCards(type);
+
+	// const inputVal = document.getElementById('inputVal').value;
+	// console.log(inputVal);
 
 
 	// Sample items data (you need to replace this with your actual data)
@@ -107,7 +128,7 @@ const Inventory = () => {
 				<Icon bg={bg} size="medium" name={type} img={img} />
 			</Title>
 
-            <Link to={`/blockchain/Types/Selling/${type}`} key={type}>
+            <Link to={`/blockchain/Selling/${type}`} key={type}>
 				<button className = "Selling">
 						Cards that are selling
 				</button>
@@ -115,16 +136,22 @@ const Inventory = () => {
 			
 			<ul className={classes.ul}>
 				{cards.map(({ id, name, imageUrl }) => (
-					<Link to={`${pathname}/${id}`} key={id}>
-						<li key={name} className={classes.li}>
-							<Img
-								src={imageUrl}
-								loader={<Skeleton />}
-								alt={name}
-								className={classes.img}
-							/>
-						</li>
-					</Link>
+					<li key={name} className={classes.li}>
+						<div className={classes.cardHover}>
+							<Link to={`${pathname}/${id}`} key={id}>
+								<Img
+									src={imageUrl}
+									loader={<Skeleton />}
+									alt={name}
+									className={classes.img}
+								/>
+							</Link>
+						</div>
+						<div className={classes.popupHover}>
+							<PopupSell/>
+						</div>
+					</li>
+
 				))}
 			</ul>
 

@@ -25,7 +25,7 @@ const Selling = () => {
 		moreLoading,
 	} = useCards(type);
 
-    if (!img) return <Navigate to="/blockchain/types/Inventory" />;
+    if (!img) return <Navigate to="/blockchain/Home" />;
 	if (!cards.length) return <Loading color={bg} middle />;  // loading animation
 
     return (
@@ -44,7 +44,7 @@ const Selling = () => {
             </header>
             <div className="container main-content">
                 {cards.map(({ id, name, imageUrl, description = 'selling', price = '$500.00' }) => (
-					<Link to={`${pathname}/${id}`} key={id}>
+					<Link to={`/blockchain/Home/${id}`} key={id}>
                     <ProductRow key={id} image={imageUrl} name={name} description={description} price={price} />
                     </Link>
                 ))}
