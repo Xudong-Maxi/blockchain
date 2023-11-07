@@ -56,13 +56,7 @@ const Cards = () => {
 		moreLoading,
 	} = useCards(type);
 
-	/*const {
-    title: { bg, img },
-    cards,
-    isFinal,
-    nextPage,
-    moreLoading,
-  } = CARDS;*/
+
 	if (!img) return <Navigate to="/blockchain/types" />;
 	if (!cards.length) return <Loading color={bg} middle />;  // loading animation
 
@@ -70,7 +64,7 @@ const Cards = () => {
 		<Fragment>
 			<Title
 				title={`${type} type Pokémon`}
-				text="Select your favorite Pokémon..."
+				// text="Select your favorite Pokémon..."
 				color={bg}
 			>
 				<Icon bg={bg} size="medium" name={type} img={img} />
