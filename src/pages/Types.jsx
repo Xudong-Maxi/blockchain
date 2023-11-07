@@ -38,9 +38,9 @@ const useStyles = createUseStyles({
 
 const Types = () => {
 	const classes = useStyles();
-	//const { types } = TYPES;
 	const { types } = useTypes();
 	const { pathname } = useLocation();
+
 
 	if (!types.length) return <Loading middle />;
 
@@ -52,7 +52,8 @@ const Types = () => {
 
 			<ul className={classes.ul}>
 				{types.map(({ bg, img, name }) => (
-					<Link to={`${pathname}/${name}`} key={name}>
+					// <Link to={`${pathname}/Inventory`} key={name}>  {/* page link */}
+					<Link to={`${pathname}/Inventory/${name}`} key={name}>  {/* page link */}
 						<li
 							key={name}
 							className={classes.li}
