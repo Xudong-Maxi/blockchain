@@ -88,10 +88,15 @@ const handleConfirm = (close) =>{
   const inputVal = document.getElementById('inputVal').value;
   // check int
   if(isNaN(parseInt(inputVal))){
+    alert("The input is invalid!");
     console.log("The input is invalid!");
   } else {
-    console.log(inputVal);
-    close();
+    // alert(`"Your card is selling! \nPrice: ${inputVal}"`);
+    if(window.confirm(`Do you make sure to sell this card? \nPrice: ${inputVal}Wei`)) {
+      console.log(inputVal);
+      close();
+    }
+
   }
 
 }
@@ -119,18 +124,6 @@ const PopupSell = () => {
             <input width = "30px" type = "number" id = "inputVal"></input>
           </div>
           <div className={classes.actions}>
-            {/* <Popup
-              trigger={<button className="button"> Trigger </button>}
-              position="top center"
-              nested
-            >
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-                magni omnis delectus nemo, maxime molestiae dolorem numquam
-                mollitia, voluptate ea, accusamus excepturi deleniti ratione
-                sapiente! Laudantium, aperiam doloribus. Odit, aut.
-              </span>
-            </Popup> */}
             <button className={classes.confirm} onClick={()=> handleConfirm(close)}>Confirm</button>
             <button
               className={classes.cancel}
