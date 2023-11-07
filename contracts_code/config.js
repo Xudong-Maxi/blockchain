@@ -1,10 +1,15 @@
-export const CONTRACT_ADDRESS = "0xF099E5091097E6ac07039C3c20a1e633E96701fe";
+export const CONTRACT_ADDRESS = "0xA4ea2B565dB5ab99A3FF81F64A25d25AC9dfF0fe";
 export const CONTRACT_ABI = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "_card_number",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_card_price",
 				"type": "uint256"
 			}
 		],
@@ -21,9 +26,9 @@ export const CONTRACT_ABI = [
 				"type": "address"
 			},
 			{
-				"internalType": "uint256",
-				"name": "card_number",
-				"type": "uint256"
+				"internalType": "string",
+				"name": "_card_number",
+				"type": "string"
 			}
 		],
 		"name": "add_card",
@@ -47,14 +52,19 @@ export const CONTRACT_ABI = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "_card_number",
-				"type": "uint256"
+				"type": "string"
 			},
 			{
 				"internalType": "address",
 				"name": "_owner_address",
 				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_card_price",
+				"type": "uint256"
 			}
 		],
 		"name": "buy_card",
@@ -63,11 +73,31 @@ export const CONTRACT_ABI = [
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "clean_all_data",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "address",
+				"name": "_userAddr",
+				"type": "address"
+			}
+		],
+		"name": "delete_user",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
 				"name": "_card_number",
-				"type": "uint256"
+				"type": "string"
 			},
 			{
 				"internalType": "uint256",
@@ -83,9 +113,9 @@ export const CONTRACT_ABI = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "_card_number",
-				"type": "uint256"
+				"type": "string"
 			},
 			{
 				"internalType": "address",
@@ -94,6 +124,19 @@ export const CONTRACT_ABI = [
 			}
 		],
 		"name": "card_price",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "check_new_user",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -121,16 +164,16 @@ export const CONTRACT_ABI = [
 						"type": "string"
 					},
 					{
-						"internalType": "uint256[]",
+						"internalType": "string[]",
 						"name": "cards",
-						"type": "uint256[]"
+						"type": "string[]"
 					},
 					{
 						"components": [
 							{
-								"internalType": "uint256",
+								"internalType": "string",
 								"name": "card",
-								"type": "uint256"
+								"type": "string"
 							},
 							{
 								"internalType": "uint256",
@@ -167,16 +210,16 @@ export const CONTRACT_ABI = [
 				"type": "string"
 			},
 			{
-				"internalType": "uint256[]",
+				"internalType": "string[]",
 				"name": "",
-				"type": "uint256[]"
+				"type": "string[]"
 			},
 			{
 				"components": [
 					{
-						"internalType": "uint256",
+						"internalType": "string",
 						"name": "card",
-						"type": "uint256"
+						"type": "string"
 					},
 					{
 						"internalType": "uint256",
@@ -213,9 +256,9 @@ export const CONTRACT_ABI = [
 				"type": "string"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "card",
-				"type": "uint256"
+				"type": "string"
 			},
 			{
 				"internalType": "uint256",
@@ -229,9 +272,9 @@ export const CONTRACT_ABI = [
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "_card",
-				"type": "uint256"
+				"type": "string"
 			}
 		],
 		"name": "see_sale_card_list",
@@ -249,9 +292,9 @@ export const CONTRACT_ABI = [
 						"type": "string"
 					},
 					{
-						"internalType": "uint256",
+						"internalType": "string",
 						"name": "card",
-						"type": "uint256"
+						"type": "string"
 					},
 					{
 						"internalType": "uint256",
@@ -318,35 +361,4 @@ export const CONTRACT_ABI = [
 		"type": "function"
 	}
 ];
-
-
-// export const CONTRACT_ADDRESS = "0x9870584D6d8ca73580347391Ad57E577641654C6";
-// export const CONTRACT_ABI = [
-// 	{
-// 		"inputs": [
-// 			{
-// 				"internalType": "uint256",
-// 				"name": "x",
-// 				"type": "uint256"
-// 			}
-// 		],
-// 		"name": "set",
-// 		"outputs": [],
-// 		"stateMutability": "nonpayable",
-// 		"type": "function"
-// 	},
-// 	{
-// 		"inputs": [],
-// 		"name": "get",
-// 		"outputs": [
-// 			{
-// 				"internalType": "uint256",
-// 				"name": "",
-// 				"type": "uint256"
-// 			}
-// 		],
-// 		"stateMutability": "view",
-// 		"type": "function"
-// 	}
-// ];
 
