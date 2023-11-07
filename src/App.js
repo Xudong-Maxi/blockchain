@@ -12,6 +12,8 @@ import History from "./components/history/history";
 import Types from "./pages/Types";
 import Cards from "./pages/Cards";
 import Card from "./pages/Card";
+import Inventory from "./pages/Inventory";
+import Selling from "./pages/Selling";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "./contracts/config";
 
 import GlobalContext from "./providers/GlobalContext";
@@ -268,6 +270,18 @@ export default function App() {
         )
     }
 
+    const InventoryDisplay = () => {
+        return (
+            <Inventory/>
+        )
+    }
+
+    const SellingDisplay = () => {
+        return (
+            <Selling/>
+        )
+    }
+
     return (
         <div className="App">
             <GlobalContext.Provider value={{ setData, dataGlobal }}>
@@ -277,6 +291,10 @@ export default function App() {
                     <Route path = "/blockchain/Types" element = {<TypesDisplay/>}></Route>
                     <Route path = "/blockchain/Types/:type" element = {<CardsDisplay/>}></Route>
                     <Route path = "/blockchain/Types/:type/:id" element = {<CardDisplay/>}></Route>
+                    <Route path = "/blockchain/Types/Inventory/:type" element = {<InventoryDisplay/>}></Route>
+                    <Route path = "/blockchain/Types/Inventory/:type/:id" element = {<CardDisplay/>}></Route>
+                    <Route path = "/blockchain/Types/Selling/:type" element = {<SellingDisplay/>}></Route>
+                    <Route path = "/blockchain/Types/Selling/:type/:id" element = {<CardDisplay/>}></Route>
                     {/* <Route path = "/blockchain/profile" element = {<ProfileDisplay/>}></Route>
                     <Route path = "/blockchain/storage" element = {<StorageDisplay/>}></Route>
                     <Route path = "/blockchain/history" element = {<HistoryDisplay/>}></Route> */}
