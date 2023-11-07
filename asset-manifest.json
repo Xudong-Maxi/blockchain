@@ -1,12 +1,13 @@
 {
   "files": {
-    "main.css": "/blockchain/static/css/main.8d00c210.css",
-    "main.js": "/blockchain/static/js/main.31a7ea8c.js",
+    "main.css": "/blockchain/static/css/main.f7c81964.css",
+    "main.js": "/blockchain/static/js/main.0c6f540c.js",
     "static/js/787.5bbf815b.chunk.js": "/blockchain/static/js/787.5bbf815b.chunk.js",
     "static/media/background.png": "/blockchain/static/media/background.c7b45c2d5e64c20c936a.png",
     "static/media/bgpic.jpg": "/blockchain/static/media/bgpic.4c406bbef1c5783a43e5.jpg",
     "static/media/logo.png": "/blockchain/static/media/logo.11e1fd2160340697591b.png",
     "static/media/pikachu.png": "/blockchain/static/media/pikachu.62f719d3ed9ef601ca1d.png",
+    "static/media/Product.png": "/blockchain/static/media/Product.6d01cc95f9c795f5bf93.png",
     "static/media/METAMASK.png": "/blockchain/static/media/METAMASK.b52147f5d62d57855c5e.png",
     "static/media/Dragon.svg": "/blockchain/static/media/Dragon.9d32757b191cbbaea8d4d418ff5d4ed3.svg",
     "static/media/Fire.svg": "/blockchain/static/media/Fire.e0bd7fcab2121e7ac1ffbbe09a3ca5dd.svg",
@@ -20,12 +21,12 @@
     "static/media/Lightning.svg": "/blockchain/static/media/Lightning.bc35c5a3faf04b605c00967b94e93693.svg",
     "static/media/Grass.svg": "/blockchain/static/media/Grass.e09623e3345d5bf5286f5323dd923c60.svg",
     "static/media/Colorless.svg": "/blockchain/static/media/Colorless.2ba66dd583ebf70eb414a0cfd20a48be.svg",
-    "main.8d00c210.css.map": "/blockchain/static/css/main.8d00c210.css.map",
-    "main.31a7ea8c.js.map": "/blockchain/static/js/main.31a7ea8c.js.map",
+    "main.f7c81964.css.map": "/blockchain/static/css/main.f7c81964.css.map",
+    "main.0c6f540c.js.map": "/blockchain/static/js/main.0c6f540c.js.map",
     "787.5bbf815b.chunk.js.map": "/blockchain/static/js/787.5bbf815b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d00c210.css",
-    "static/js/main.31a7ea8c.js"
+    "static/css/main.f7c81964.css",
+    "static/js/main.0c6f540c.js"
   ]
 }
