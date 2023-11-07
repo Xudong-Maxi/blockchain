@@ -19,30 +19,39 @@ const useStyles = createUseStyles({
 		position: "relative",
 		width: "80px",
 		height: "80px",
-		"& :after": {
-			content: " ",
-			display: "block",
-			borderRadius: "50%",
-			width: "0",
-			height: "0",
-			margin: "8px",
-			boxSizing: "border-box",
-			border: "32px solid #fff",
-			borderColor: "#fff transparent #fff transparent",
-			animation: "lds-hourglass 1.2s infinite",
+		"& div": {
+			display: "inline-block",
+			position: "absolute",
+			left: "8px",
+			width: "16px",
+			background: ({ color }) => color,
+			animation: "$lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite",
+		},
+		"& div:nth-child(1)": {
+			left: "8px",
+			animationDelay: "-0.24s",
+		},
+		"& div:nth-child(2)": {
+			left: "32px",
+			animationDelay: "-0.12s",
+		},
+		"& div:nth-child(3)": {
+			left: "56px",
+			animationDelay: "0",
 		},
 	},
-	"@keyframes lds-hourglass": {
+	"@keyframes lds-facebook": {
 		"0%": {
-			transform: "rotate(0)",
-			animationTimingFunction: "cubic-bezier(0.55, 0.055, 0.675, 0.19)",
+			top: "8px",
+			height: "64px",
 		},
 		"50%": {
-			transform: "rotate(900deg)",
-			animationTimingFunction: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+			top: "24px",
+			height: "32px",
 		},
 		"100%": {
-			transform: "rotate(1800deg)",
+			top: "24px",
+			height: "32px",
 		},
 	}, 
 });
@@ -52,6 +61,9 @@ const Loading2 = ({ color = "#ed1d25", middle = false }) => {
 	return (
 		<div className={middle ? classes.container : ""}>
 			<div className={classes.div}>
+				<div></div>
+				<div/>
+				<div/>
 			</div>
 		</div>
 	);
