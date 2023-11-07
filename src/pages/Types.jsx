@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../images/logo.png";
 
 import Icon from "../components/Icon";
-import Loading from "../components/Loading";
+import Loading2 from "../components/Loading2";
 import Title from "../components/Title";
 
 import useTypes from "../hooks/useTypes";
@@ -42,7 +42,7 @@ const Types = () => {
 	const { pathname } = useLocation();
 
 
-	if (!types.length) return <Loading middle />;
+	if (!types.length) return <Loading2 middle />;
 
 	return (
 		<Fragment>
