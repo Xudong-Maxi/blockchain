@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { createUseStyles } from "react-jss";
 import PropTypes from "prop-types";
+import Logo from "../images/METAMASK.png"
 
-// List of 
 const useStyles = createUseStyles({
 	ul: {
 		padding: "0.5em 1em",
@@ -40,6 +40,29 @@ const useStyles = createUseStyles({
 			},
 		},
 	},
+	home: {
+		display: "inline-block",
+		margin: "0.5em 15em",
+		fontSize: "1rem",
+		color: "#959fa5",
+		// float: "right",
+		position: "absolute",
+		right: "0px",
+		"& > *": {
+			display: "inline-block",
+			color: "#2c3f4c",
+			textDecoration: "none",
+			"&:hover": {
+				color: "red",
+				textDecoration: "underline",
+			},
+		},
+	},
+	homeIcon:{
+		width:"1.5em" ,
+		height:"1.5em",
+		marginBottom: "0",
+	},
 	current: {
 		fontSize: "0.8rem",
 		"&:after": {
@@ -65,6 +88,15 @@ function Breadcrumb({ pathname, list }) {
 						</li>
 					);
 				})}
+				<li
+					key={"Home"}
+					className={`${classes.home}`}
+				>
+					<Link to={"/blockchain/Home"}>
+						{/* <img src={Logo} alt="logo" className={classes.homeIcon}></img> */}
+						<span>Home</span>
+					</Link>
+				</li>
 			</ul>
 		</div>
 	);

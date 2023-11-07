@@ -19,7 +19,6 @@ import { CONTRACT_ABI, CONTRACT_ADDRESS } from "./contracts/config";
 import GlobalContext from "./providers/GlobalContext";
 import { defaultGlobal } from "./providers/dataGlobal";
 import Header from "./components/Header";
-import { zeroPad } from "ethers/lib/utils";
 
 export default function App() {
     const [haveMetamask, setHaveMetamask] = useState(true);     // check if the browser has MetaMask installed. 
@@ -52,16 +51,6 @@ export default function App() {
     const location = useLocation();
     const shouldShowHeader = (location.pathname !== '/blockchain/') && (location.pathname !== '/blockchain');  // don't show header in login page
 
-    // useEffect(() => {
-    //     const { ethereum } = window;
-    //     const checkMetamaskAvailability = async () => {
-    //         if (!ethereum) {
-    //             setHaveMetamask(false);
-    //         }
-    //         setHaveMetamask(true);
-    //     };
-    //     checkMetamaskAvailability();
-    // }, []);
 
 ////// connect to MetaMask. 
     const connectWallet = async () => {         // function that connect to METAMASK account, activated when clicking on 'connect'. 
@@ -252,8 +241,7 @@ export default function App() {
     // display types page
     const TypesDisplay = () => {
         return (
-            <Types
-            />
+            <Types/>
         )
     }
 
