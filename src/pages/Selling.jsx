@@ -13,10 +13,10 @@ import ProductRow from '../components/ProductRow';
 
 import useCards from "../hooks/useCards";
 
-const Selling = () => {
-    const { type } = useParams();
+const Selling = (props) => {
+    // const { type } = useParams();
 	const { pathname } = useLocation();
-	console.log(type);
+	const type = props.type;
 	const {
 		title: { bg, img },
 		cards,

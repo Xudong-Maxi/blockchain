@@ -86,7 +86,6 @@ const Inventory = (props) => {
 	const { pathname } = useLocation();
 	const classes = useStyles();
 	const type = props.type;
-	console.log(type);
 	const {
 		title: { bg, img },
 		cards,
@@ -128,7 +127,7 @@ const Inventory = (props) => {
 				<Icon bg={bg} size="medium" name={type} img={img} />
 			</Title>
 
-            <Link to={`/blockchain/Selling/${type}`} key={type}>
+            <Link to={`/blockchain/Home/Selling`} key={type}>
 				<button className = "Selling">
 						Cards that are selling
 				</button>

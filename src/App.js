@@ -263,13 +263,19 @@ export default function App() {
         return (
             <Inventory
                 type = "Fighting"
+                address = {address}
+                contract = {contract}
             />
         )
     }
 
     const SellingDisplay = () =>{
         return (
-            <Selling/>
+            <Selling
+                type = "Fighting"
+                address = {address}
+                contract = {contract}
+            />
         )
     }
 
@@ -284,7 +290,7 @@ export default function App() {
                     <Route path = "/blockchain/Types/:type/:id" element = {<CardDisplay/>}></Route>
                     <Route path = "/blockchain/Home" element = {<InventoryDisplay/>}></Route>
                     <Route path = "/blockchain/Home/:id" element = {<CardDisplay/>}></Route>
-                    <Route path = "/blockchain/Selling/:type" element = {<SellingDisplay/>}></Route>
+                    <Route path = "/blockchain/Home/Selling" element = {<SellingDisplay/>}></Route>
                     {/* <Route path = "/blockchain/Types/Inventory/:type/:id" element = {<CardDisplay/>}></Route>
                     <Route path = "/blockchain/Types/Selling/:type" element = {<SellingDisplay/>}></Route>
                     <Route path = "/blockchain/Types/Selling/:type/:id" element = {<CardDisplay/>}></Route> */}

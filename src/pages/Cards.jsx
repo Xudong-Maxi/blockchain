@@ -48,7 +48,6 @@ const Cards = () => {
 	const { type } = useParams();
 	const { pathname } = useLocation();
 	const classes = useStyles();
-	console.log(type);
 	const {
 		title: { bg, img },
 		cards,
