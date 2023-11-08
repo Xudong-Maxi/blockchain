@@ -61,30 +61,31 @@ const useStyles = createUseStyles({  // define style of list (display cards)
 			width: "100%",
 		},
 	},
+	button: {
+		background: "transparent",
+		border: ({ color }) => `2px solid ${color}`,
+		color: ({ color }) => color,
+		cursor: "pointer",
+		fontWeight: "bold",
+		width: "50%",
+		padding: "8px 16px",
+		position: "relative",
+		textAlign: "center",
+		textDecoration: "none",
+		"@media (max-width: 767px)": {
+		  width: "90%",
+		},
+		"&:hover": {
+		  background: ({ color }) => color,
+		  color: "#000",
+		},
+	  },
 });
-
-
-const UsersItemsList = ({ items }) => {
-	return (
-	  <div>
-		<h2>Users' Items</h2>
-		<ul>
-		  {items.map((item) => (
-			<li key={item.id}>
-			  <strong>ID:</strong> {item.id}, <strong>Name:</strong> {item.name},{" "}
-			  <strong>Price:</strong> {item.price}, <strong>Status:</strong>{" "}
-			  {item.status}
-			</li>
-		  ))}
-		</ul>
-	  </div>
-	);
-};
 
 const Inventory = (props) => {
 	//const { type } = useParams();
 	const { pathname } = useLocation();
-	const classes = useStyles();
+	const classes = useStyles({ color:"#bf8a1a" });
 	const type = props.type;
 	const {
 		title: { bg, img },
@@ -96,16 +97,6 @@ const Inventory = (props) => {
 
 	// const inputVal = document.getElementById('inputVal').value;
 	// console.log(inputVal);
-
-
-	// Sample items data (you need to replace this with your actual data)
-	const usersItems = [
-		{ id: 1, name: "Item 1", price: 10, status: "In Stock" },
-		{ id: 2, name: "Item 2", price: 20, status: "Out of Stock" },
-		// Add more items here
-	];
-	// Fetch the list of users' items (you need to implement this)
-	//const usersItems = getUsersItems();
 	
 	/*const {
     title: { bg, img },
@@ -128,7 +119,7 @@ const Inventory = (props) => {
 			</Title>
 
             <Link to={`/blockchain/Home/Selling`} key={type}>
-				<button className = "Selling">
+				<button className={classes.button}>
 						Cards that are selling
 				</button>
 			</Link>
@@ -153,8 +144,6 @@ const Inventory = (props) => {
 
 				))}
 			</ul>
-
-			<UsersItemsList items={usersItems} />
 
 			{moreLoading && <Loading color={bg} />}
 			{!moreLoading && !isFinal && (

@@ -291,8 +291,8 @@ export default function App() {
                     <Route path = "/blockchain/Home" element = {<InventoryDisplay/>}></Route>
                     <Route path = "/blockchain/Home/:id" element = {<CardDisplay/>}></Route>
                     <Route path = "/blockchain/Home/Selling" element = {<SellingDisplay/>}></Route>
-                    {/* <Route path = "/blockchain/Types/Inventory/:type/:id" element = {<CardDisplay/>}></Route>
-                    <Route path = "/blockchain/Types/Selling/:type" element = {<SellingDisplay/>}></Route>
+                    <Route path = "/blockchain/Home/Selling/:id" element = {<CardDisplay/>}></Route>
+                    {/* <Route path = "/blockchain/Types/Selling/:type" element = {<SellingDisplay/>}></Route>
                     <Route path = "/blockchain/Types/Selling/:type/:id" element = {<CardDisplay/>}></Route> */}
                     {/* <Route path = "/blockchain/profile" element = {<ProfileDisplay/>}></Route>
                     <Route path = "/blockchain/storage" element = {<StorageDisplay/>}></Route>
