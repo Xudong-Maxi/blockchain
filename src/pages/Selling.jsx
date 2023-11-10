@@ -9,7 +9,6 @@ import Button from "../components/Button";
 import Icon from "../components/Icon";
 import Loading from "../components/Loading";
 import Title from "../components/Title";
-import ProductRow from '../components/ProductRow';
 
 import useCards from "../hooks/useCards";
 

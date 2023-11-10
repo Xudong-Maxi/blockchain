@@ -87,7 +87,9 @@ export default function App() {
             setIsConnected(true);
 
             const user_data = await contract.methods.getUserData('0x0CC00b52CAd8f39Ca02d2D75f46A397bEd4AD13b').call();
+            const user_card = user_data[1];
             console.log(user_data[1]);
+
 
             navigate('/blockchain/Types');
         }
@@ -295,7 +297,9 @@ export default function App() {
                     <Route path = "/blockchain/Home/:id" element = {<CardDisplay/>}></Route>
                     <Route path = "/blockchain/Home/Selling" element = {<SellingDisplay/>}></Route>
                     <Route path = "/blockchain/Home/Selling/:id" element = {<CardDisplay/>}></Route>
-                    {/* <Route path = "/blockchain/Types/Selling/:type" element = {<SellingDisplay/>}></Route>
+
+                    {/* <Route path = "/blockchain/Types/Inventory/:type/:id" element = {<CardDisplay/>}></Route>
+                    <Route path = "/blockchain/Types/Selling/:type" element = {<SellingDisplay/>}></Route>
                     <Route path = "/blockchain/Types/Selling/:type/:id" element = {<CardDisplay/>}></Route> */}
                     {/* <Route path = "/blockchain/profile" element = {<ProfileDisplay/>}></Route>
                     <Route path = "/blockchain/storage" element = {<StorageDisplay/>}></Route>
