@@ -1,13 +1,27 @@
-import React from 'react';
-import './SellersList.css'; // Import the CSS file
+import React, { useState, useEffect } from 'react';
+import './SellersList.css';
 
-const SellersList = () => {
-  const sellers = [
-    { name: 'Seller 1', price: '$10.99', address: '0x0' },
-    { name: 'Seller 2', price: '$12.49', address: '0x1' },
-    { name: 'Seller 3', price: '$9.99', address: '0x2' },
-    { name: 'Seller 4', price: '$9.99', address: '0x2' },
-  ];
+const SellersList = ({ contract, id }) => {
+  const [sellers, setSellers] = useState([]);
+
+  const get_card_list = async () => {
+    const selling_card_list = await contract.methods.see_sale_card_list(id).call();
+    return selling_card_list.map((data) => data);
+  };
+
+  useEffect(() => {
+
+    const fetchCardList = async () => {
+      try {
+        const userList = await get_card_list();
+        setSellers(userList);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCardList();
+  }, [contract, id]); 
 
   return (
     <div className="sellers-container">
@@ -16,9 +30,8 @@ const SellersList = () => {
         {sellers.map((seller, index) => (
           <div key={index} className="seller-card">
             <div className="seller-info">
-              <p className="seller-name">{seller.name}</p>
-              <p className="seller-price">{seller.price}</p>
-              <p className="seller-address">{seller.address}</p>
+              <p className="seller-price">{seller[2]}</p> 
+              <p className="seller-address">{seller[0]}</p> 
             </div>
           </div>
         ))}
