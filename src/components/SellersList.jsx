@@ -4,59 +4,55 @@ import './DropDown.css';
 
 const SellersList = ({ contract, id }) => {
   const [sellers, setSellers] = useState([]);
-
-  const get_card_list = async () => {
-    const selling_card_list = await contract.methods.see_sale_card_list(id).call();
-    return selling_card_list.map((data) => data);
-  };
-
-
-  
-  useEffect(() => {
-
-    const fetchCardList = async () => {
-      try {
-        const userList = await get_card_list();
-        setSellers(userList);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchCardList();
-  }, [contract, id]); 
-
   const [sortingOption, setSortingOption] = useState('Lowest Price');
   const [sortedSellers, setSortedSellers] = useState([]);
 
+  const getCardList = async () => {
+    try {
+      const sellingCardList = await contract.methods.see_sale_card_list(id).call();
+      return sellingCardList.map((data) => data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return [];
+    }
+  };
 
-  const sortSellers = (option) => {
-    let sorted = [...sellers];
+  const sortSellers = (option, data) => {
+    let sorted = [...data];
 
     switch (option) {
       case 'Lowest Price':
-        sorted.sort((a, b) => a.price - b.price);
+        sorted.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
         break;
       case 'Highest Price':
-        sorted.sort((a, b) => b.price - a.price);
+        sorted.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        break;
+      default:
         break;
     }
 
-    setSortedSellers(sorted);
-    setSortingOption(option);
+    return sorted;
   };
 
   useEffect(() => {
-    // Initially, sort the sellers by the lowest price
-    sortSellers('Lowest Price');
-  }, []); // The empty dependency array ensures this effect runs only once on component mount
+    const fetchData = async () => {
+      const userList = await getCardList();
+      setSellers(userList);
+    };
 
+    fetchData();
+  }, [contract, id]);
+
+  useEffect(() => {
+    const sorted = sortSellers(sortingOption, sellers);
+    setSortedSellers(sorted);
+  }, [sortingOption, sellers]);
 
   return (
     <div className="sellers-container">
       <div className="sort-options">
         <label>Sort by:</label>
-        <select onChange={(e) => sortSellers(e.target.value)}>
+        <select onChange={(e) => setSortingOption(e.target.value)}>
           <option value="Lowest Price">Lowest Price</option>
           <option value="Highest Price">Highest Price</option>
         </select>
@@ -66,8 +62,8 @@ const SellersList = ({ contract, id }) => {
         {sortedSellers.map((seller, index) => (
           <div key={index} className="seller-card">
             <div className="seller-info">
-              <p className="seller-price">{seller[2] + " ETH"}</p> 
-              <p className="seller-address">{seller[0]}</p> 
+              <p className="seller-price">{seller[2] + " ETH"}</p>
+              <p className="seller-address">{seller[0]}</p>
             </div>
           </div>
         ))}

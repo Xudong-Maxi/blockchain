@@ -1,4 +1,3 @@
-
 Add Pokemon-themed styling to the dropdown
 .sellers-container {
     position: relative;
@@ -25,7 +24,7 @@ Add Pokemon-themed styling to the dropdown
   
   /* Style the dropdown arrow icon */
   .sellers-container::after {
-    content: '\25BC'; /* Unicode down arrow character */
+    /* content: '\25BC'; Unicode down arrow character */
     position: absolute;
     top: 50%;
     right: 10px;
