@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = "0xA4ea2B565dB5ab99A3FF81F64A25d25AC9dfF0fe";
+export const CONTRACT_ADDRESS = "0xc285E0dE0A6E2AeA894F2aC4b7576543E4544a57";
 export const CONTRACT_ABI = [
 	{
 		"inputs": [
@@ -37,13 +37,7 @@ export const CONTRACT_ABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_username",
-				"type": "string"
-			}
-		],
+		"inputs": [],
 		"name": "addUser",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -70,6 +64,13 @@ export const CONTRACT_ABI = [
 		"name": "buy_card",
 		"outputs": [],
 		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "check_new_user",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -159,11 +160,6 @@ export const CONTRACT_ABI = [
 						"type": "address"
 					},
 					{
-						"internalType": "string",
-						"name": "username",
-						"type": "string"
-					},
-					{
 						"internalType": "string[]",
 						"name": "cards",
 						"type": "string[]"
@@ -204,11 +200,6 @@ export const CONTRACT_ABI = [
 		],
 		"name": "getUserData",
 		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
 			{
 				"internalType": "string[]",
 				"name": "",
@@ -252,11 +243,6 @@ export const CONTRACT_ABI = [
 			},
 			{
 				"internalType": "string",
-				"name": "username",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
 				"name": "card",
 				"type": "string"
 			},
@@ -285,11 +271,6 @@ export const CONTRACT_ABI = [
 						"internalType": "address",
 						"name": "owner_addr",
 						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "username",
-						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -350,11 +331,6 @@ export const CONTRACT_ABI = [
 				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "username",
-				"type": "string"
 			}
 		],
 		"stateMutability": "view",
