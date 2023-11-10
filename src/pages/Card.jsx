@@ -99,6 +99,7 @@ const Card = (props) => {
 			</div>
 			<SellersList
 				contract = {contract}
+				address = {address}
 				id = {id}
 			/>
 		</div>

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './SellersList.css'; // Import the CSS file
 import './DropDown.css';
+import PopupBuy from './PopupBuy';
 
-const SellersList = ({ contract, id }) => {
+const SellersList = ({ contract, address, id }) => {
   const [sellers, setSellers] = useState([]);
 
   const get_card_list = async () => {
@@ -68,6 +69,13 @@ const SellersList = ({ contract, id }) => {
             <div className="seller-info">
               <p className="seller-price">{seller[2] + " ETH"}</p> 
               <p className="seller-address">{seller[0]}</p> 
+              <PopupBuy
+                contract={contract}
+                address={address}
+                id={id}
+                price={seller[2]}
+                ownerAddress={seller[0]}
+              />
             </div>
           </div>
         ))}

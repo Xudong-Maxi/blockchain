@@ -21,7 +21,10 @@
   }
   
   .seller-card {
-    background: #f3f4f6; /* Light background for the card */
+    background-image: url('../images/buyBackground.jpg'); /* Relative path to your local image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background: #f3f4f6; Light background for the card */
     border: 2px solid #ccc; /* Card border */
     border-radius: 10px; /* Rounded corners */
     padding: 20px;
@@ -32,10 +35,10 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   }
 
-  .seller-card:hover {
+  /* .seller-card:hover {
     background-color: #ffcb05;
     cursor: pointer;
-  }
+  } */
   
   .seller-info {
     margin-bottom: 10px;
