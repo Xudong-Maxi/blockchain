@@ -45,7 +45,9 @@ const useStyles = createUseStyles({
 	},
 });
 
-const Card = () => {
+const Card = (props) => {
+	const contract = props.contract;
+	const address = props.address;
 	const { id } = useParams();
 	const classes = useStyles();
 	//const { card } = CARD;
@@ -95,7 +97,10 @@ const Card = () => {
 					<CardBoxIcon data={miscellaneous} />
 				</div>
 			</div>
-			<SellersList/>
+			<SellersList
+				contract = {contract}
+				id = {id}
+			/>
 		</div>
 		
 	);
