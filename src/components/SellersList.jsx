@@ -29,30 +29,21 @@ const SellersList = ({ contract, id }) => {
   const [sortingOption, setSortingOption] = useState('Lowest Price');
   const [sortedSellers, setSortedSellers] = useState([]);
 
+
   const sortSellers = (option) => {
     let sorted = [...sellers];
 
     switch (option) {
       case 'Lowest Price':
-        sorted.sort((a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1)));
+        sorted.sort((a, b) => a.price - b.price);
         break;
       case 'Highest Price':
-        sorted.sort((a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1)));
-        break;
-      case 'Latest Arrival':
-        sorted.sort((a, b) => new Date(b.latestArrival) - new Date(a.latestArrival));
-        break;
-      default:
+        sorted.sort((a, b) => b.price - a.price);
         break;
     }
 
     setSortedSellers(sorted);
     setSortingOption(option);
-  };
-
-  const formatLatestArrival = (timestamp) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-    return new Date(timestamp).toLocaleDateString('en-US', options);
   };
 
   useEffect(() => {
@@ -68,7 +59,6 @@ const SellersList = ({ contract, id }) => {
         <select onChange={(e) => sortSellers(e.target.value)}>
           <option value="Lowest Price">Lowest Price</option>
           <option value="Highest Price">Highest Price</option>
-          <option value="Latest Arrival">Latest Arrival</option>
         </select>
       </div>
       <h2 className="sellers-heading">Available Sellers</h2>
@@ -76,7 +66,7 @@ const SellersList = ({ contract, id }) => {
         {sortedSellers.map((seller, index) => (
           <div key={index} className="seller-card">
             <div className="seller-info">
-              <p className="seller-price">{seller[2]}</p> 
+              <p className="seller-price">{seller[2] + " ETH"}</p> 
               <p className="seller-address">{seller[0]}</p> 
             </div>
           </div>

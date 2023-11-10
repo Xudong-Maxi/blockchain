@@ -10,12 +10,13 @@
     background-color: #2a75bb; /* Pokémon blue */
     padding: 10px;
     border-radius: 5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   }
   
   .sellers-list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column; /* Change to column to stack cards vertically */
+    align-items: center; /* Center cards horizontally */
     gap: 20px; /* Space between cards */
   }
   
@@ -24,9 +25,11 @@
     border: 2px solid #ccc; /* Card border */
     border-radius: 10px; /* Rounded corners */
     padding: 20px;
-    width: 200px; /* Fixed card size */
+    width: calc(100% - 40px); /* 100% width minus left and right padding */
+    margin: 0 20px; /* Padding at the ends */
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   }
 
   .seller-card:hover {
@@ -41,14 +44,17 @@
   .seller-name {
     color: #333;
     font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   }
   
   .seller-price {
-    color: #388e3c; /* Green color for price */
+    color: #FF0000; /* Green color for price */
     margin: 5px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   }
   
   .seller-address {
-    color: #d32f2f; /* Red color for address */
+    color: black; /* Red color for address */
     font-size: 0.8em;
-  }
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
