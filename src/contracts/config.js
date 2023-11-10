@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = "0xc285E0dE0A6E2AeA894F2aC4b7576543E4544a57";
+export const CONTRACT_ADDRESS = "0xb4044dfe85B0101a347Dc5e9bB21Fe08f5f740B5";
 export const CONTRACT_ABI = [
 	{
 		"inputs": [
@@ -68,13 +68,6 @@ export const CONTRACT_ABI = [
 	},
 	{
 		"inputs": [],
-		"name": "check_new_user",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "clean_all_data",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -125,6 +118,25 @@ export const CONTRACT_ABI = [
 			}
 		],
 		"name": "card_price",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_userAddr",
+				"type": "address"
+			}
+		],
+		"name": "check_new_user",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -324,35 +336,4 @@ export const CONTRACT_ABI = [
 		"type": "function"
 	}
 ];
-
-
-// export const CONTRACT_ADDRESS = "0x9870584D6d8ca73580347391Ad57E577641654C6";
-// export const CONTRACT_ABI = [
-// 	{
-// 		"inputs": [
-// 			{
-// 				"internalType": "uint256",
-// 				"name": "x",
-// 				"type": "uint256"
-// 			}
-// 		],
-// 		"name": "set",
-// 		"outputs": [],
-// 		"stateMutability": "nonpayable",
-// 		"type": "function"
-// 	},
-// 	{
-// 		"inputs": [],
-// 		"name": "get",
-// 		"outputs": [
-// 			{
-// 				"internalType": "uint256",
-// 				"name": "",
-// 				"type": "uint256"
-// 			}
-// 		],
-// 		"stateMutability": "view",
-// 		"type": "function"
-// 	}
-// ];
 

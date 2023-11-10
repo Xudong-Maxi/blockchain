@@ -85,6 +85,12 @@ export default function App() {
             setAddress(accounts[0]);
             setBalance(bal);
             setIsConnected(true);
+            
+            const new_indicator = await contract.methods.check_new_user(accounts[0]).call();
+            if(new_indicator == 0){
+                alert('We are creating your account.\nPlease click OK and confirm on your metamask.\nIt may take several seconds.');
+                await contract.methods.addUser().send({from: accounts[0]});
+            }
 
             navigate('/blockchain/Types');
         }
