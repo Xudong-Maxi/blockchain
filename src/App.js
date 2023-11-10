@@ -255,7 +255,10 @@ export default function App() {
 
     const CardDisplay = () => {
         return (
-            <Card/>
+            <Card
+                address = {address}
+                contract = {contract}
+            />
         )
     }
 

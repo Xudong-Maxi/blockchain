@@ -2,13 +2,29 @@ import React, { useState, useEffect } from 'react';
 import './SellersList.css'; // Import the CSS file
 import './DropDown.css';
 
-const SellersList = () => {
-  const [sellers, setSellers] = useState([
-    { price: '$10.99', address: '0x0', latestArrival: '2023-10-15T14:30:00' },
-    { price: '$12.49', address: '0x1', latestArrival: '2023-10-16T14:30:00' },
-    { price: '$9.99', address: '0x2', latestArrival: '2023-10-17T14:30:00' },
-    { price: '$9.99', address: '0x2', latestArrival: '2023-10-18T14:30:00' },
-  ]);
+const SellersList = ({ contract, id }) => {
+  const [sellers, setSellers] = useState([]);
+
+  const get_card_list = async () => {
+    const selling_card_list = await contract.methods.see_sale_card_list(id).call();
+    return selling_card_list.map((data) => data);
+  };
+
+
+  
+  useEffect(() => {
+
+    const fetchCardList = async () => {
+      try {
+        const userList = await get_card_list();
+        setSellers(userList);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCardList();
+  }, [contract, id]); 
 
   const [sortingOption, setSortingOption] = useState('Lowest Price');
   const [sortedSellers, setSortedSellers] = useState([]);
@@ -44,6 +60,7 @@ const SellersList = () => {
     sortSellers('Lowest Price');
   }, []); // The empty dependency array ensures this effect runs only once on component mount
 
+
   return (
     <div className="sellers-container">
       <div className="sort-options">
@@ -59,11 +76,8 @@ const SellersList = () => {
         {sortedSellers.map((seller, index) => (
           <div key={index} className="seller-card">
             <div className="seller-info">
-              <p className="seller-price">{seller.price}</p>
-              <p className="seller-address">{seller.address}</p>
-              <p className="seller-latest-arrival">
-                Latest Arrival: {formatLatestArrival(seller.latestArrival)}
-              </p>
+              <p className="seller-price">{seller[2]}</p> 
+              <p className="seller-address">{seller[0]}</p> 
             </div>
           </div>
         ))}
