@@ -51,13 +51,16 @@
   }
   
   .seller-price {
-    color: #FF0000; /* Green color for price */
+    font-size: 30px;
+    font-weight: bold;
+    color: hwb(208 23% 45%); /*Green color for price*/
     margin: 5px 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   }
   
   .seller-address {
-    color: black; /* Red color for address */
-    font-size: 0.8em;
+    font-size: 18px;
+    font-weight: bold;
+    color: hwb(208 11% 69%); /* Red color for address */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }

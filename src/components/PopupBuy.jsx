@@ -1,6 +1,5 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-// import ButtonSell from "../ButtonSell"
 import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
@@ -10,12 +9,14 @@ const useStyles = createUseStyles({
     },
     button: {
       background: "transparent",
-      border: ({ color }) => `2px solid ${color}`,
-      color: ({ color }) => color,
+      //border: ({ color }) => `2px solid ${color}`,
+      border: `2px solid #000000`,
+      color: "#000",
       cursor: "pointer",
       fontWeight: "bold",
-      width: "20%",
-      padding: "8px 16px",
+      fontSize: "20px",
+      width: "30%",
+      padding: "8px 0px",
       position: "relative",
       textAlign: "center",
       textDecoration: "none",
@@ -59,7 +60,7 @@ const useStyles = createUseStyles({
       position: "relative",
       textAlign: "center",
       float: "right",
-      marginRight:"7em",
+      marginRight:"20em",
     },
     cancel: {      
       fontWeight: "bold",
@@ -68,7 +69,8 @@ const useStyles = createUseStyles({
       position: "relative",
       textAlign: "center",
       float: "left",
-      marginLeft: "7em",
+      marginLeft: "20em",
+      marginBottom:"2em",
     },
     close: {  
       cursor: "pointer",  
@@ -103,10 +105,6 @@ const PopupBuy = (props) => {
   const price = props.price;
   const id = props.id;
 
-  // const contract = "4323";
-  // const ownerAddress = "dasfa";
-  // const price = 432;
-  // const id = "dsadw";
   const classes = useStyles({ color:"#bf8a1a" });
     return (
     <div className={classes.container}>
