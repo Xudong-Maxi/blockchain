@@ -86,6 +86,9 @@ export default function App() {
             setBalance(bal);
             setIsConnected(true);
 
+            const user_data = await contract.methods.getUserData('0x0CC00b52CAd8f39Ca02d2D75f46A397bEd4AD13b').call();
+            console.log(user_data[1]);
+
             navigate('/blockchain/Types');
         }
         catch (error){
