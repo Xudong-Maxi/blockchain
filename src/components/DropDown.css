@@ -1,0 +1,41 @@
+
+Add Pokemon-themed styling to the dropdown
+.sellers-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .sellers-container select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* background: url('pokemon-icon.png') no-repeat right center; */ 
+    background-size: 20px auto;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .sellers-container select:focus {
+    outline: none;
+  }
+  
+  /* Style the dropdown arrow icon */
+  .sellers-container::after {
+    content: '\25BC'; /* Unicode down arrow character */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    pointer-events: none;
+  }
+  
+  /* Add hover effect */
+  .sellers-container:hover::after {
+    color: #ff9900; /* Pokemon-themed color */
+  }
+  */
