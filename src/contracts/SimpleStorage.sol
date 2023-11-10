@@ -29,19 +29,13 @@ contract UserDataContract {
     mapping(address => UserData) public users;
 
     //check if the user have an account in our website
-    function check_new_user() public {
-        uint user_exist = 0;
+    function check_new_user(address _userAddr) public view returns (uint){
         for(uint i=0; i<allUserAddresses.length; i++){
-            if (allUserAddresses[i] == msg.sender){
-                user_exist = 1;
+            if (allUserAddresses[i] == _userAddr){
+                return 1;
             }
         }
-        if(user_exist == 0){        //new user
-            UserData storage userData = users[msg.sender];
-            userData.userAddress = msg.sender;
-            userCount += 1;
-            allUserAddresses.push(msg.sender);  
-        }
+        return 0;
     }
 
     ///function to add a new user
