@@ -13,6 +13,8 @@ import Title from "../components/Title";
 
 import useCard from "../hooks/useCard";
 
+import SellersList from "../components/SellersList";
+
 const useStyles = createUseStyles({
 	container: {
 		maxWidth: "900px",
@@ -93,7 +95,9 @@ const Card = () => {
 					<CardBoxIcon data={miscellaneous} />
 				</div>
 			</div>
+			<SellersList/>
 		</div>
+		
 	);
 };
 

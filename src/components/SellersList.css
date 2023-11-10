@@ -1,0 +1,54 @@
+/* SellersList.css */
+.sellers-container {
+    margin: 50px;
+    font-family: 'Arial', sans-serif; /* Or any font that you feel is Pokémon-themed */
+  }
+  
+  .sellers-heading {
+    color: #ffcb05; /* Pokémon yellow */
+    text-align: center;
+    background-color: #3b4cca; /* Pokémon blue */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .sellers-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Space between cards */
+  }
+  
+  .seller-card {
+    background: #f3f4f6; /* Light background for the card */
+    border: 2px solid #ccc; /* Card border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    width: 200px; /* Fixed card size */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+
+  .seller-card:hover {
+    background-color: #ffcb05;
+    cursor: pointer;
+  }
+  
+  .seller-info {
+    margin-bottom: 10px;
+  }
+  
+  .seller-name {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .seller-price {
+    color: #388e3c; /* Green color for price */
+    margin: 5px 0;
+  }
+  
+  .seller-address {
+    color: #d32f2f; /* Red color for address */
+    font-size: 0.8em;
+  }
