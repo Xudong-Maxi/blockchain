@@ -297,7 +297,6 @@ export default function App() {
                     <Route path = "/blockchain/Home/:id" element = {<CardDisplay/>}></Route>
                     <Route path = "/blockchain/Home/Selling" element = {<SellingDisplay/>}></Route>
                     <Route path = "/blockchain/Home/Selling/:id" element = {<CardDisplay/>}></Route>
-
                     {/* <Route path = "/blockchain/Types/Inventory/:type/:id" element = {<CardDisplay/>}></Route>
                     <Route path = "/blockchain/Types/Selling/:type" element = {<SellingDisplay/>}></Route>
                     <Route path = "/blockchain/Types/Selling/:type/:id" element = {<CardDisplay/>}></Route> */}
