@@ -12,14 +12,12 @@ contract UserDataContract {
 
     struct UserData{           //define user struct info
         address userAddress;
-        string username;
         string[] cards;
         Sale_cards[] sale_cards;
     }
 
     struct Sale_cards_list{
         address owner_addr;
-        string username;
         string card;
         uint price;
     }
@@ -30,23 +28,21 @@ contract UserDataContract {
     // mapping(address => Sell_list) public sell_list;
     mapping(address => UserData) public users;
 
-
-    // function to check if the user is exist (1-> new_user, 0-> exist user)
-    function check_new_user() public view returns(uint){
+    //check if the user have an account in our website
+    function check_new_user(address _userAddr) public view returns (uint){
         for(uint i=0; i<allUserAddresses.length; i++){
-            if (allUserAddresses[i] == msg.sender){
-                return 0;
+            if (allUserAddresses[i] == _userAddr){
+                return 1;
             }
         }
-        return 1;
+        return 0;
     }
 
     ///function to add a new user
-    function addUser(string memory _username) public {
+    function addUser() public {
 
         UserData storage userData = users[msg.sender];
         userData.userAddress = msg.sender;
-        userData.username = _username;
         userCount += 1;
         allUserAddresses.push(msg.sender);
     }
@@ -56,16 +52,24 @@ contract UserDataContract {
     }
 
     ///function to get info of one user
-    function getUserData(address _userAddress) public view returns (string memory, string[] memory, Sale_cards[] memory) {
+    function getUserData(address _userAddress) public view returns (string[] memory, Sale_cards[] memory) {
         UserData storage userData = users[_userAddress];
-        return (userData.username, userData.cards, userData.sale_cards);
+        return (userData.cards, userData.sale_cards);
     }
+
 
 
     ///function to add card into a user's package
     function add_card(address _userAddress, string memory _card_number) public{       //should change to internal later
         UserData storage userData = users[_userAddress];
         userData.cards.push(_card_number);
+    }
+
+    function add_many_cards(address _userAddress, string[] memory _card_number) public{       //should change to internal later
+        UserData storage userData = users[_userAddress];
+        for(uint i = 0; i < _card_number.length; i++){
+            userData.cards.push(_card_number[i]);
+        }
     }
 
     ///function to sale card
@@ -79,7 +83,7 @@ contract UserDataContract {
                 Sale_cards memory new_sale_cards = Sale_cards(_card_number, _price);
                 userData.sale_cards.push(new_sale_cards);       //add sale_card info into user's selling list
                 
-                sale_cards_list.push(Sale_cards_list(msg.sender, userData.username, _card_number, _price));     //add sale_card info into system's selling list
+                sale_cards_list.push(Sale_cards_list(msg.sender, _card_number, _price));     //add sale_card info into system's selling list
                 break;
             }
         }
@@ -126,6 +130,7 @@ contract UserDataContract {
         public
         payable
     {
+        require(msg.sender != _owner_address, "Seller cannot be the buyer");
         uint sale_state = 0;
         for (uint m = 0; m < sale_cards_list.length; m++) {     //remove the card from system's selling list
             if (sale_cards_list[m].owner_addr == _owner_address && keccak256(abi.encodePacked(sale_cards_list[m].card)) == keccak256(abi.encodePacked(_card_number)) && msg.value == sale_cards_list[m].price && sale_cards_list[m].price == _card_price){
@@ -174,11 +179,10 @@ contract UserDataContract {
 
         for (uint i = 0; i < sale_cards_list.length; i++) {
             if (keccak256(abi.encodePacked(sale_cards_list[i].card)) == keccak256(abi.encodePacked(_card))){
-                return_list[k] = Sale_cards_list(sale_cards_list[i].owner_addr, sale_cards_list[i].username, sale_cards_list[i].card, sale_cards_list[i].price);
+                return_list[k] = Sale_cards_list(sale_cards_list[i].owner_addr, sale_cards_list[i].card, sale_cards_list[i].price);
                 k = k + 1;
             }
         }
-
         // Resize the return_list to contain only the relevant elements
         assembly {
             mstore(return_list, k)
