@@ -163,10 +163,8 @@ const Selling = (props) => {
 		})
 	}, [idlist]);
 
-	if(!idlist){
+	if(idlist){
 		if (!image.length) return <Loading middle />;
-	} else {
-		
 	}
 
 	const images = image.map(([imageUrl, id]) => ({ imageUrl, id }));

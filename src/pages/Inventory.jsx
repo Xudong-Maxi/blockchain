@@ -156,10 +156,8 @@ const Inventory = (props) => {
 		})
 	}, [idlist]);
 
-	if(!idlist){
+	if(idlist){
 		if (!image.length) return <Loading middle />;
-	} else {
-		
 	}
 	
 
