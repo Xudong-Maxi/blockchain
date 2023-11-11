@@ -163,7 +163,8 @@ const Selling = (props) => {
 		})
 	}, [idlist]);
 
-	if(idlist){
+	if(Object.keys(idlist).length !== 0){
+		console.log(`idlist ${idlist}`);
 		if (!image.length) return <Loading middle />;
 	}
 

@@ -155,11 +155,10 @@ const Inventory = (props) => {
 			setImage(imageUrls)
 		})
 	}, [idlist]);
-
-	if(idlist){
+	
+	if(Object.keys(idlist).length !== 0){
 		if (!image.length) return <Loading middle />;
 	}
-	
 
 	const images = image.map(([imageUrl, id]) => ({ imageUrl, id }));
 
