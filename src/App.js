@@ -6,9 +6,6 @@ import Web3 from "web3";
 
 import './App.css';
 import Login from "./pages/login/login";
-import Profile from "./components/profile/profile";
-import Storage from "./components/storage/storage";
-import History from "./components/history/history";
 import Types from "./pages/Types";
 import Cards from "./pages/Cards";
 import Card from "./pages/Card";
@@ -87,6 +84,7 @@ export default function App() {
             setIsConnected(true);
             
             const new_indicator = await contract.methods.check_new_user(accounts[0]).call();
+            console.log(new_indicator);
             if(new_indicator == 0){
                 alert('We are creating your account.\nPlease click OK and confirm on your metamask.\nIt may take several seconds.');
                 await contract.methods.addUser().send({from: accounts[0]});
@@ -101,150 +99,7 @@ export default function App() {
     }
 
 
-////// Contract Deployment. 
-    // IMPORTANT: async / await is essential to get values instead of Promise. 
-    const storeData = async (inputVal) => {
-        const res = await contract.methods.set(inputVal).send({from: address});
-        return res;
-    }
 
-    const getData = async () => {
-        const res = await contract.methods.get().call();
-        return res;
-    }
-
-
-////// history recording. 
-    const RecordOverFlow = () => {
-        if (recordLen > maxRecordLen){
-            let outlierNum = recordLen - maxRecordLen;
-            setHistoryRecord(current => current.splice(1, outlierNum));
-            setRecordLen(maxRecordLen);
-        }
-    }
-
-    const RecordPush = (opr, val, detail) => {
-        let stat = 1;
-        let cost = 0;
-        if (val.length === 0){
-            val = 'NA';
-            cost = 'NA';
-            stat = 0;
-        }
-        else{
-            if (opr === 'get'){
-                cost = 0;
-                stat = 1;
-            }
-            else{
-                if (detail === 'null'){
-                    setStoredPending(false);
-                    setStoredDone(true);
-                    console.log('Rejected');
-                    cost = 'NA';
-                    stat = 2;
-                }
-                else{
-                    setStoredDone(true);
-                    console.log('Done');
-                    console.log(detail);    // show the details of transaction. 
-                    cost = detail.gasUsed;
-                    stat = 1;
-                }
-            }
-        }
-
-        const newRecord = {
-            id: recordLen + 1, 
-            address: address, 
-            operation: opr, 
-            value: val, 
-            cost: cost, 
-            status: stat
-        };
-        if (recordLen === 0){
-            setHistoryRecord([newRecord, newRecord]);
-        }
-        else{
-            setHistoryRecord(current => [...current, newRecord]);
-        }
-        setRecordLen(recordLen + 1);
-
-        if (recordLen > maxRecordLen){
-            RecordOverFlow();
-        }
-    }
-
-
-////// store and get value. 
-    const storedValUpdate = async () => {
-        const inputVal = document.getElementById('inputVal').value;
-        setStoredPending(false);
-        setStoredDone(false);
-
-        if (inputVal.length === 0) {
-            const detail = 'null';
-            RecordPush('store', inputVal, detail);
-        }
-        else {
-            setStoredPending(true);
-            setStoredVal(inputVal);
-            
-            try{
-                const detail = await storeData(inputVal);   // contract deployed. 
-                RecordPush('store', inputVal, detail);      // recorded. 
-            }
-            catch(err){
-                const detail = 'null';                      // no detail info. 
-                RecordPush('store', inputVal, detail);      // recorded. 
-            }
-        }
-    }
-
-    const showValUpdate = async () => {
-        const ans = await getData();
-        setStoredPending(false);
-        setStoredDone(false);
-
-        setShowVal(ans);
-        RecordPush('get', ans);
-    }
-
-
-////// display functions. 
-    const ProfileDisplay = () => {
-        return (
-            <Profile 
-                isConnected = {isConnected}
-                address = {address} 
-                networkType = {network} 
-                balance = {balance}
-            />
-        )
-    }
-
-    const StorageDisplay = () => {
-        return (
-            <Storage 
-                isConnected = {isConnected}
-                storeValHandle = {storedValUpdate} 
-                showValHandle = {showValUpdate} 
-                showVal = {showVal} 
-                storedPending = {storedPending}
-                storedDone = {storedDone}
-            />
-        )
-    }
-
-    const HistoryDisplay = () => {
-        return (
-            <History 
-                isConnected = {isConnected}
-                recordList = {historyRecord}
-                recordLen = {recordLen}
-            />
-        )
-    }
 
     // display types page
     const TypesDisplay = () => {
@@ -301,12 +156,6 @@ export default function App() {
                     <Route path = "/blockchain/Home/:id" element = {<CardDisplay/>}></Route>
                     <Route path = "/blockchain/Home/Selling" element = {<SellingDisplay/>}></Route>
                     <Route path = "/blockchain/Home/Selling/:id" element = {<CardDisplay/>}></Route>
-                    {/* <Route path = "/blockchain/Types/Inventory/:type/:id" element = {<CardDisplay/>}></Route>
-                    <Route path = "/blockchain/Types/Selling/:type" element = {<SellingDisplay/>}></Route>
-                    <Route path = "/blockchain/Types/Selling/:type/:id" element = {<CardDisplay/>}></Route> */}
-                    {/* <Route path = "/blockchain/profile" element = {<ProfileDisplay/>}></Route>
-                    <Route path = "/blockchain/storage" element = {<StorageDisplay/>}></Route>
-                    <Route path = "/blockchain/history" element = {<HistoryDisplay/>}></Route> */}
                 </Routes>
             </GlobalContext.Provider>
         </div>
