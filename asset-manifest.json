@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/blockchain/static/css/main.e29fcec9.css",
-    "main.js": "/blockchain/static/js/main.baa8c68d.js",
+    "main.js": "/blockchain/static/js/main.e820e5a7.js",
     "static/js/787.5bbf815b.chunk.js": "/blockchain/static/js/787.5bbf815b.chunk.js",
     "static/media/background.png": "/blockchain/static/media/background.c7b45c2d5e64c20c936a.png",
     "static/media/bgpic.jpg": "/blockchain/static/media/bgpic.4c406bbef1c5783a43e5.jpg",
@@ -21,11 +21,11 @@
     "static/media/Grass.svg": "/blockchain/static/media/Grass.e09623e3345d5bf5286f5323dd923c60.svg",
     "static/media/Colorless.svg": "/blockchain/static/media/Colorless.2ba66dd583ebf70eb414a0cfd20a48be.svg",
     "main.e29fcec9.css.map": "/blockchain/static/css/main.e29fcec9.css.map",
-    "main.baa8c68d.js.map": "/blockchain/static/js/main.baa8c68d.js.map",
+    "main.e820e5a7.js.map": "/blockchain/static/js/main.e820e5a7.js.map",
     "787.5bbf815b.chunk.js.map": "/blockchain/static/js/787.5bbf815b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e29fcec9.css",
-    "static/js/main.baa8c68d.js"
+    "static/js/main.e820e5a7.js"
   ]
 }
