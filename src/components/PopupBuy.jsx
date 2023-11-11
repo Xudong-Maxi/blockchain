@@ -97,7 +97,7 @@ const handleConfirm = async (contract, address, ownerAddress, price, id, close) 
     const ret = await contract.methods.buy_card(id, ownerAddress,price).send({from: address, value: price});
   }
   catch(err){
-    alert(`Transaction canceled.${err}`);
+    alert(`Transaction canceled.`);
   }
 
   close();
