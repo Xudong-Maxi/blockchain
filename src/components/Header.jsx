@@ -3,12 +3,29 @@ import { createUseStyles } from "react-jss";
 import { useLocation } from "react-router-dom";
 
 import Breadcrumb from "../components/Breadcrumb";
+import { hover } from "@testing-library/user-event/dist/hover";
 
 const useStyles = createUseStyles({
 	container: {
-		padding: "3rem 0",
+		position: "relative",
+        padding: "3rem 0",
+        textAlign: "center", // Ensure Breadcrumb stays centered
 	},
-});
+
+	cardstack: {
+        position: "absolute",
+        left: "6rem",
+        top: "1.6rem",
+        transform: "translateY(-50%)",
+		zIndex: 5,
+		fontFamily: 'Pokemon Solid',
+		transition: "transform 0.3s ease",
+		'&:hover': { 
+			color: "red", // Example hover color change
+		},
+	}
+    })
+
 
 function Header() {
 	const classes = useStyles();
@@ -41,6 +58,9 @@ function Header() {
 
 	return (
 		<div className={classes.container}>
+			<div className={classes.cardstack}>
+				CardStack
+			</div>
 			<Breadcrumb list={path} pathname={pathname} /> 
 		</div>
 	);

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { createUseStyles } from "react-jss";
 import PropTypes from "prop-types";
 import Logo from "../images/METAMASK.png"
+import { none } from "list";
 
 const useStyles = createUseStyles({
 	ul: {
@@ -71,11 +72,14 @@ const useStyles = createUseStyles({
 	},
 });
 
+
+
 function Breadcrumb({ pathname, list }) {
 	const classes = useStyles();	
 
 	return (
-		<div className={classes.container}>
+		<div>
+			<div className={classes.container}>
 			<ul className={classes.ul}>
 				{list.map((p) => {
 					const current = pathname === p.url;
@@ -98,6 +102,7 @@ function Breadcrumb({ pathname, list }) {
 					</Link>
 				</li>
 			</ul>
+		</div>
 		</div>
 	);
 }
