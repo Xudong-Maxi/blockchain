@@ -65,6 +65,13 @@ contract UserDataContract {
         userData.cards.push(_card_number);
     }
 
+    function add_many_cards(address _userAddress, string[] memory _card_number) public{       //should change to internal later
+        UserData storage userData = users[_userAddress];
+        for(uint i = 0; i < _card_number.length; i++){
+            userData.cards.push(_card_number[i]);
+        }
+    }
+
     ///function to sale card
     //only card holder(msg.sender) can control this function
     function sale_card(string memory _card_number, uint _price) public{       //should change to internal later
@@ -123,6 +130,7 @@ contract UserDataContract {
         public
         payable
     {
+        require(msg.sender != _owner_address, "Seller cannot be the buyer");
         uint sale_state = 0;
         for (uint m = 0; m < sale_cards_list.length; m++) {     //remove the card from system's selling list
             if (sale_cards_list[m].owner_addr == _owner_address && keccak256(abi.encodePacked(sale_cards_list[m].card)) == keccak256(abi.encodePacked(_card_number)) && msg.value == sale_cards_list[m].price && sale_cards_list[m].price == _card_price){

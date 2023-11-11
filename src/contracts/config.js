@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = "0xb4044dfe85B0101a347Dc5e9bB21Fe08f5f740B5";
+export const CONTRACT_ADDRESS = "0x996b4CC11CFC74A29A95eF105c938111E84e17aA";
 export const CONTRACT_ABI = [
 	{
 		"inputs": [
@@ -32,6 +32,24 @@ export const CONTRACT_ABI = [
 			}
 		],
 		"name": "add_card",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_userAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_card_number",
+				"type": "string[]"
+			}
+		],
+		"name": "add_many_cards",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -136,19 +154,6 @@ export const CONTRACT_ABI = [
 				"type": "address"
 			}
 		],
-		"name": "check_new_user",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "check_new_user",
 		"outputs": [
 			{
@@ -349,4 +354,3 @@ export const CONTRACT_ABI = [
 		"type": "function"
 	}
 ];
-
