@@ -21,6 +21,10 @@ function Header() {
 				name: "Login",
 				url: "/blockchain",
 			},
+			// {
+			// 	name: "Types",
+			// 	url: "/blockchain/Types",
+			// },
 		];
 		const path = pathname;
 		const s = path.split("/");
