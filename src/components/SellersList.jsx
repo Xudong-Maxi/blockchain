@@ -66,7 +66,7 @@ const SellersList = ({ contract, address, id }) => {
         {sortedSellers.map((seller, index) => (
           <div key={index} className="seller-card">
             <div className="seller-info">
-              <p className="seller-price">{seller[2] + " ETH"}</p> 
+              <p className="seller-price">{seller[2] + " Wei"}</p> 
               <p className="seller-address">{seller[0]}</p> 
               <PopupBuy
                 contract={contract}
