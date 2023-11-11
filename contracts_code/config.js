@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = "0xA4ea2B565dB5ab99A3FF81F64A25d25AC9dfF0fe";
+export const CONTRACT_ADDRESS = "0x996b4CC11CFC74A29A95eF105c938111E84e17aA";
 export const CONTRACT_ABI = [
 	{
 		"inputs": [
@@ -39,11 +39,23 @@ export const CONTRACT_ABI = [
 	{
 		"inputs": [
 			{
-				"internalType": "string",
-				"name": "_username",
-				"type": "string"
+				"internalType": "address",
+				"name": "_userAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_card_number",
+				"type": "string[]"
 			}
 		],
+		"name": "add_many_cards",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "addUser",
 		"outputs": [],
 		"stateMutability": "nonpayable",
@@ -135,7 +147,13 @@ export const CONTRACT_ABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_userAddr",
+				"type": "address"
+			}
+		],
 		"name": "check_new_user",
 		"outputs": [
 			{
@@ -157,11 +175,6 @@ export const CONTRACT_ABI = [
 						"internalType": "address",
 						"name": "userAddress",
 						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "username",
-						"type": "string"
 					},
 					{
 						"internalType": "string[]",
@@ -205,11 +218,6 @@ export const CONTRACT_ABI = [
 		"name": "getUserData",
 		"outputs": [
 			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
 				"internalType": "string[]",
 				"name": "",
 				"type": "string[]"
@@ -252,11 +260,6 @@ export const CONTRACT_ABI = [
 			},
 			{
 				"internalType": "string",
-				"name": "username",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
 				"name": "card",
 				"type": "string"
 			},
@@ -285,11 +288,6 @@ export const CONTRACT_ABI = [
 						"internalType": "address",
 						"name": "owner_addr",
 						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "username",
-						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -350,15 +348,9 @@ export const CONTRACT_ABI = [
 				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "username",
-				"type": "string"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
 	}
 ];
-
