@@ -84,7 +84,23 @@ const useStyles = createUseStyles({
     },
 });
 
-const PopupExit = () => {
+const handleConfirm = async (contract, address, price, id, close) =>{
+  try{
+    const ret = await contract.methods.abort_sale_card(id,price).send({from: address});
+  }
+  catch(err){
+    alert("Transaction canceled.");
+  }
+
+  close();
+}
+
+const PopupExit = (props) => {
+  const contract = props.contract;
+  const address = props.address;
+  const price = props.price;
+  const id = props.id;
+
   const classes = useStyles({ color:"#bf8a1a" });
     return (
     <div className={classes.container}>
@@ -98,7 +114,7 @@ const PopupExit = () => {
           <button className={classes.close} onClick={close}>
             &times;
           </button>
-          <div className={classes.header}>Sell Cards</div>
+          <div className={classes.header}>Cancel Selling</div>
           <div className={classes.content}>
             {' '}
             <br/>
@@ -107,10 +123,7 @@ const PopupExit = () => {
           </div>
           <div className={classes.actions}>
             <button className={classes.confirm} 
-              onClick={()=> {
-                console.log('confirmed ');
-                close();
-              }}
+              onClick={()=> {handleConfirm(contract, address, price, id, close)}}
             >
               Confirm
             </button>

@@ -84,7 +84,17 @@ const useStyles = createUseStyles({
     },
 });
 
-const handleConfirm = (close) =>{
+const sellconfirm = async (contract, address, inputVal, id, close) =>{
+  try{
+    const ret = await contract.methods.sale_card(id, inputVal).send({from: address});
+  }
+  catch(err){
+    alert("Transaction canceled.");
+  }
+  close();
+}
+
+const handleConfirm = (contract, address, id,close) =>{
   const inputVal = document.getElementById('inputVal').value;
   // check int
   if(isNaN(parseInt(inputVal))){
@@ -94,14 +104,18 @@ const handleConfirm = (close) =>{
     // alert(`"Your card is selling! \nPrice: ${inputVal}"`);
     if(window.confirm(`Do you make sure to sell this card? \nPrice: ${inputVal}Wei`)) {
       console.log(inputVal);
+      sellconfirm(contract, address, inputVal, id, close);
       close();
     }
-
   }
 
 }
 
-const PopupSell = () => {
+const PopupSell = (props) => {
+  const contract = props.contract;
+  const address = props.address;
+  const id = props.id;
+
   const classes = useStyles({ color:"#bf8a1a" });
     return (
     <div className={classes.container}>
@@ -124,7 +138,7 @@ const PopupSell = () => {
             <input width = "30px" type = "number" id = "inputVal"></input>
           </div>
           <div className={classes.actions}>
-            <button className={classes.confirm} onClick={()=> handleConfirm(close)}>Confirm</button>
+            <button className={classes.confirm} onClick={()=> handleConfirm(contract, address, id,close)}>Confirm</button>
             <button
               className={classes.cancel}
               onClick={() => {

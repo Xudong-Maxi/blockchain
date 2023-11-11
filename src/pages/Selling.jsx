@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import '../App.css';
 import { Link, useParams, useLocation, Navigate } from "react-router-dom";
 import { createUseStyles } from "react-jss";
@@ -78,68 +78,146 @@ const useStyles = createUseStyles({  // define style of list (display cards)
 		  color: "#000",
 		},
 	  },
+	buttonSwitch: {
+		background: "transparent",
+		marginBottom: "20px",
+		border: "2px solid #3ba9ec",
+		color: "#000",
+		cursor: "pointer",
+		fontWeight: "bold",
+		width: "50%",
+		padding: "8px 16px",
+		position: "relative",
+		textAlign: "center",
+		textDecoration: "none",
+		"@media (max-width: 767px)": {
+		  width: "90%",
+		},
+		"&:hover": {
+		  background: "#3ba9ec",
+		  color: "#000",
+		},
+	  },
 });
 
+const FetchDataforId = async (ids) =>{
+    let imageUrls = [];
+    for (const id of ids) {
+        try {
+        const response = await fetch(`https://api.pokemontcg.io/v1/cards/${id}`)
+        const todo = await response.json()
+        imageUrls.push([todo.card.imageUrlHiRes,id])
+		// console.log(imageUrls)
+        }
+        catch (error){
+            console.error("Error fetching data for ID:", id, error);
+        }
+    }
+
+    return imageUrls;
+}
+
 const Selling = (props) => {
-    // const { type } = useParams();
 	const { pathname } = useLocation();
 	const classes = useStyles({ color:"#bf8a1a" });
-	const type = props.type;
-	const {
-		title: { bg, img },
-		cards,
-		isFinal,
-		nextPage,
-		moreLoading,
-	} = useCards(type);
+	const [idlist, setIdlist] = useState([]);
+	const [pricelist, setPricelist] = useState([]);
+	const [datalist, setDatalist] = useState([]);
+	// const [combinedData, setCombinedData] = useState([]);
+	const contract = props.contract;
+	const address = props.address;
+	const [image, setImage] = useState([]);
 
-    if (!img) return <Navigate to="/blockchain/Home" />;
-	if (!cards.length) return <Loading color={bg} middle />;  // loading animation
+	const getUserList = async () => {
+		try {
+		  const userdata = await contract.methods.getUserData(address).call();
+		  console.log(`idlist : ${userdata[1]}`)
+			
+		  return userdata[1];
+		} catch (error) {
+		  console.error("Error fetching data:", error);
+		  return [];
+		}
+	};
+
+	useEffect(() => {
+		const fetchData = async () => {
+		  	const data = await getUserList();
+		  	setDatalist(data);
+
+		  	const fetchedIds = data.map(item => item[0]);
+        	const fetchedPrices = data.map(item => item[1]);
+			// console.log(fetchedPrices)
+
+			setIdlist(fetchedIds);
+            setPricelist(fetchedPrices);
+		};
+	
+		fetchData();
+	}, [contract]);
+
+	useEffect(()=>{
+		FetchDataforId(idlist).then(imageUrls => {
+			// console.log(`here is data: ${imageUrls}`)
+			setImage(imageUrls)
+		})
+	}, [idlist]);
+
+	if (!image.length) return <Loading middle />;
+
+	const images = image.map(([imageUrl, id]) => ({ imageUrl, id }));
+	const priceMap = datalist.map(([id, price]) => ({id, price}));
+
+	// const priceMap = new Map(datalist.map(([id, price]) => ({id, price})));
+
+	const combinedData = images.map(({imageUrl, id},i) => {
+		const price = priceMap[i];
+
+		return [imageUrl, id, price.price];
+	});
+
 
     return (
         <Fragment>
             <Title
-				title={`${type} type Pokémon`}
-				text="Select your favorite Pokémon..."
-				color={bg}
+				title={`${address}`}
+				text="Cards you are selling..."
+				color={"#F2D94E"}
 			>
-				<Icon bg={bg} size="medium" name={type} img={img} />
 			</Title>
 
-			<Link to={`/blockchain/Home`} key={type}>
-				<button className={classes.button}>
+			<Link to={`/blockchain/Home`}>
+				<button className={classes.buttonSwitch}>
 						Cards in Inventory
 				</button>
 			</Link>
 
-            <ul className={classes.ul}>
-				{cards.map(({ id, name, imageUrl, price = "$500.00" }) => (
-					<li key={name} className={classes.li}>
+			<ul className={classes.ul}>
+				{combinedData.map(([ imageUrl, id, price],i) => (
+					<li key={id} className={classes.li}>
 						<div className={classes.cardHover}>
-							<Link to={`${pathname}/${id}`} key={id}>
+							<Link to={`${pathname}/${id}`} key={i}>
 								<Img
 									src={imageUrl}
 									loader={<Skeleton />}
-									alt={name}
+									alt={id}
 									className={classes.img}
 								/>
 							</Link>
-						</div>
-						<div className={classes.product_price}>
-							{price}
+							<h3>{price} Wei</h3>
 						</div>
 						<div className={classes.popupHover}>
-							<PopupExit/>
+							<PopupExit
+								address={address}
+								contract={contract}
+								id={id}
+								price={price}
+							/>
 						</div>
 					</li>
-
 				))}
 			</ul>
 
-            {moreLoading && <Loading color={bg} />}
-			{!moreLoading && !isFinal && (
-				<Button color={bg} handleEvent={nextPage} text="Load more cards..." />
-			)}
         </Fragment>
      );
 }

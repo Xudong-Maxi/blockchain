@@ -78,6 +78,26 @@ const useStyles = createUseStyles({  // define style of list (display cards)
 		  color: "#000",
 		},
 	  },
+	buttonSwitch: {
+		background: "transparent",
+		marginBottom: "20px",
+		border: "2px solid #3ba9ec",
+		color: "#000",
+		cursor: "pointer",
+		fontWeight: "bold",
+		width: "50%",
+		padding: "8px 16px",
+		position: "relative",
+		textAlign: "center",
+		textDecoration: "none",
+		"@media (max-width: 767px)": {
+		  width: "90%",
+		},
+		"&:hover": {
+		  background: "#3ba9ec",
+		  color: "#000",
+		},
+	  },
 });
 
 
@@ -136,22 +156,26 @@ const Inventory = (props) => {
 		})
 	}, [idlist]);
 
-
-	if (!image.length) return <Loading middle />;
+	if(!idlist){
+		if (!image.length) return <Loading middle />;
+	} else {
+		
+	}
+	
 
 	const images = image.map(([imageUrl, id]) => ({ imageUrl, id }));
 
 	return (
 		<Fragment>
 			<Title
-				title={`Inventory`}
-				text="Inventory..."
+				title={`${address}`}
+				text="This is your inventory..."
 				color={"#F2D94E"}
 			>
 			</Title>
 
             <Link to={`/blockchain/Home/Selling`}>
-				<button className={classes.button}>
+				<button className={classes.buttonSwitch}>
 						Cards that are selling
 				</button>
 			</Link>
@@ -170,7 +194,11 @@ const Inventory = (props) => {
 							</Link>
 						</div>
 						<div className={classes.popupHover}>
-							<PopupSell/>
+							<PopupSell
+								contract={contract}
+								address={address}
+								id={id}
+							/>
 						</div>
 					</li>
 
