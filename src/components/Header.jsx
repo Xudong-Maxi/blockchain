@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createUseStyles } from "react-jss";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 import Breadcrumb from "../components/Breadcrumb";
 import { hover } from "@testing-library/user-event/dist/hover";
@@ -62,9 +62,11 @@ function Header() {
 
 	return (
 		<div className={classes.container}>
-			<div className={classes.cardstack}>
-				CardStack
-			</div>
+			<Link to = '/blockchain/Types'>
+				<div className={classes.cardstack}>
+					CardStack
+				</div>
+			</Link>
 			<Breadcrumb list={path} pathname={pathname} /> 
 		</div>
 	);

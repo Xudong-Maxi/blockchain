@@ -131,7 +131,7 @@ const Selling = (props) => {
 	const getUserList = async () => {
 		try {
 		  const userdata = await contract.methods.getUserData(address).call();
-		  console.log(`idlist : ${userdata[1]}`)
+		//   console.log(`idlist : ${userdata[1]}`)
 			
 		  return userdata[1];
 		} catch (error) {
@@ -163,7 +163,11 @@ const Selling = (props) => {
 		})
 	}, [idlist]);
 
-	if (!image.length) return <Loading middle />;
+	if(!idlist){
+		if (!image.length) return <Loading middle />;
+	} else {
+		
+	}
 
 	const images = image.map(([imageUrl, id]) => ({ imageUrl, id }));
 	const priceMap = datalist.map(([id, price]) => ({id, price}));
@@ -194,7 +198,7 @@ const Selling = (props) => {
 
 			<ul className={classes.ul}>
 				{combinedData.map(([ imageUrl, id, price],i) => (
-					<li key={id} className={classes.li}>
+					<li key={i} className={classes.li}>
 						<div className={classes.cardHover}>
 							<Link to={`${pathname}/${id}`} key={i}>
 								<Img

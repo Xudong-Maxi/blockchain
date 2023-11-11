@@ -89,10 +89,15 @@ const useStyles = createUseStyles({
 
 const handleConfirm = async (contract, address, ownerAddress, price, id, close) =>{
   try{
+    // console.log(`address: ${address}`)
+    // console.log(`owneraddress: ${ownerAddress}`)
+    // ownerAddress = ownerAddress.toLowerCase()
+    // console.log(`price: ${price}`)
+    // console.log(`lowercase owneraddress: ${ownerAddress}`)
     const ret = await contract.methods.buy_card(id, ownerAddress,price).send({from: address, value: price});
   }
   catch(err){
-    alert("Transaction canceled.");
+    alert(`Transaction canceled.${err}`);
   }
 
   close();
