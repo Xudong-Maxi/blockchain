@@ -1,6 +1,6 @@
 import './login/login.css';
 import '../global.css';
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link, useParams, useLocation, Navigate } from "react-router-dom";
 import { createUseStyles } from "react-jss";
 import Skeleton from "react-loading-skeleton";
@@ -11,9 +11,7 @@ import Icon from "../components/Icon";
 import Loading from "../components/Loading";
 import Title from "../components/Title";
 
-import useCards from "../hooks/useCards";
 
-//import PopupSell from "../components/popup/PopupSell"
 import PopupSell from "../components/PopupSell"
 
 const useStyles = createUseStyles({  // define style of list (display cards)
@@ -82,57 +80,91 @@ const useStyles = createUseStyles({  // define style of list (display cards)
 	  },
 });
 
+
+const FetchDataforId = async (ids) =>{
+    let imageUrls = [];
+    for (const id of ids) {
+        try {
+        const response = await fetch(`https://api.pokemontcg.io/v1/cards/${id}`)
+        const todo = await response.json()
+        imageUrls.push([todo.card.imageUrlHiRes,id])
+		// console.log(imageUrls)
+        }
+        catch (error){
+            console.error("Error fetching data for ID:", id, error);
+        }
+    }
+
+    return imageUrls;
+}
+
+
 const Inventory = (props) => {
-	//const { type } = useParams();
 	const { pathname } = useLocation();
 	const classes = useStyles({ color:"#bf8a1a" });
-	const type = props.type;
-	const {
-		title: { bg, img },
-		cards,
-		isFinal,
-		nextPage,
-		moreLoading,
-	} = useCards(type);
+	// const idlist = ['swsh35-25', 'dp1-7', 'ex16-30','det1-4'];
+	const [idlist, setIdlist] = useState([]);
+	const contract = props.contract;
+	const address = props.address;
 
-	// const inputVal = document.getElementById('inputVal').value;
-	// console.log(inputVal);
+	const getIdList = async () => {
+		try {
+		  const userdata = await contract.methods.getUserData(address).call();
+		//   console.log(`idlist : ${userdata[0]}`)
+		  return userdata[0];
+		} catch (error) {
+		  console.error("Error fetching data:", error);
+		  return [];
+		}
+	  };
+
+	useEffect(() => {
+		const fetchData = async () => {
+		  const ids = await getIdList();
+		  setIdlist(ids);
+		};
 	
-	/*const {
-    title: { bg, img },
-    cards,
-    isFinal,
-    nextPage,
-    moreLoading,
-  } = CARDS;*/
-	if (!img) return <Navigate to="/blockchain" />;
-	if (!cards.length) return <Loading color={bg} middle />;
+		fetchData();
+	}, [contract]);
+
+	const [image, setImage] = useState([]);
+
+	useEffect(()=>{
+		FetchDataforId(idlist).then(imageUrls => {
+			// console.log(`here is data: ${imageUrls}`)
+			setImage(imageUrls)
+		})
+	}, [idlist]);
+
+
+	if (!image.length) return <Loading middle />;
+
+	const images = image.map(([imageUrl, id]) => ({ imageUrl, id }));
 
 	return (
 		<Fragment>
 			<Title
-				title={`${type} Inventory`}
+				title={`Inventory`}
 				text="Inventory..."
-				color={bg}
+				color={"#F2D94E"}
 			>
-				<Icon bg={bg} size="medium" name={type} img={img} />
 			</Title>
 
-            <Link to={`/blockchain/Home/Selling`} key={type}>
+            <Link to={`/blockchain/Home/Selling`}>
 				<button className={classes.button}>
 						Cards that are selling
 				</button>
 			</Link>
 			
 			<ul className={classes.ul}>
-				{cards.map(({ id, name, imageUrl }) => (
-					<li key={name} className={classes.li}>
+				{images.map(({ imageUrl, id }) => (
+					<li key={id} className={classes.li}>
 						<div className={classes.cardHover}>
 							<Link to={`${pathname}/${id}`} key={id}>
 								<Img
 									src={imageUrl}
 									loader={<Skeleton />}
-									alt={name}
+									alt={id}
 									className={classes.img}
 								/>
 							</Link>
@@ -144,13 +176,11 @@ const Inventory = (props) => {
 
 				))}
 			</ul>
-
-			{moreLoading && <Loading color={bg} />}
-			{!moreLoading && !isFinal && (
-				<Button color={bg} handleEvent={nextPage} text="Load more cards..." />
-			)}
 		</Fragment>
 	);
+
+
+
 };
 
 export default Inventory;
