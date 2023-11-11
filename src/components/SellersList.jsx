@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './SellersList.css'; // Import the CSS file
 import './DropDown.css';
 import PopupBuy from './PopupBuy';
+import H3 from './H3.jsx';
 
 const SellersList = ({ contract, address, id }) => {
   const [sellers, setSellers] = useState([]);
@@ -52,11 +53,13 @@ const SellersList = ({ contract, address, id }) => {
   return (
     <div className="sellers-container">
       <div className="sort-options">
-        <label>Sort by:</label>
+        <h3>
+        <label><b>Sort by : </b></label>
         <select onChange={(e) => setSortingOption(e.target.value)}>
           <option value="Lowest Price">Lowest Price</option>
           <option value="Highest Price">Highest Price</option>
         </select>
+        </h3>
       </div>
       <h2 className="sellers-heading">Available Sellers</h2>
       <div className="sellers-list">
