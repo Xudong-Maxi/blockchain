@@ -92,9 +92,6 @@ export default function App() {
                 await contract.methods.addUser().send({from: accounts[0]});
             }
 
-            const userdata = await contract.methods.getUserData(accounts[0]).call();
-            console.log(userdata[1][0][0]);
-
 
             navigate('/blockchain/Types');
         }
