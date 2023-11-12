@@ -110,7 +110,7 @@ const PopupBuy = (props) => {
       if(ret) navigate(pathname);
     }
     catch(err){
-      alert(`Transaction canceled.${err}`);
+      alert(`Transaction canceled.`);
     }
   }
 
