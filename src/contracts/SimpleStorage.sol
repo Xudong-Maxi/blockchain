@@ -140,9 +140,9 @@ contract UserDataContract {
                 sale_state = 1;     //indicate the sale success
                 break;
             }
-            else {
-                payable(msg.sender).transfer(address(this).balance);        //if there is something wrong, return the money back to the buyer
-            }
+        }
+        if (sale_state == 0){
+            payable(msg.sender).transfer(address(this).balance);        //if there is something wrong, return the money back to the buyer
         }
 
         if (sale_state == 1) {
