@@ -2,6 +2,10 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 // import ButtonSell from "../ButtonSell"
 import { createUseStyles } from "react-jss";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const useStyles = createUseStyles({
     container: {
@@ -84,39 +88,53 @@ const useStyles = createUseStyles({
     },
 });
 
-const sellconfirm = async (contract, address, inputVal, id, close) =>{
-  try{
-    const ret = await contract.methods.sale_card(id, inputVal).send({from: address});
-  }
-  catch(err){
-    alert("Transaction canceled.");
-  }
-  close();
-}
 
-const handleConfirm = (contract, address, id,close) =>{
-  const inputVal = document.getElementById('inputVal').value;
-  // check int
-  if(isNaN(parseInt(inputVal))){
-    alert("The input is invalid!");
-    console.log("The input is invalid!");
-  } else {
-    // alert(`"Your card is selling! \nPrice: ${inputVal}"`);
-    if(window.confirm(`Do you make sure to sell this card? \nPrice: ${inputVal}Wei`)) {
-      console.log(inputVal);
-      sellconfirm(contract, address, inputVal, id, close);
-      close();
-    }
-  }
-
-}
 
 const PopupSell = (props) => {
   const contract = props.contract;
   const address = props.address;
   const id = props.id;
+  // const onStateChange = props.onStateChange;
+  // const [reset, setReset] = useState(false);
 
   const classes = useStyles({ color:"#bf8a1a" });
+  // const [, forceUpdate] = useState();
+  // let history = useNavigate();
+  const navigate = useNavigate();
+
+
+
+
+
+  const sellconfirm = async (contract, address, inputVal, id, close) =>{
+    try{
+      const ret = await contract.methods.sale_card(id, inputVal).send({from: address});
+      if(ret) navigate('/blockchain/Home');
+      close();
+    }
+    catch(err){
+      alert("Transaction canceled.");
+    }
+  }
+  
+  const handleConfirm = (contract, address, id,close) =>{
+    const inputVal = document.getElementById('inputVal').value;
+    // check int
+    if(isNaN(parseInt(inputVal))){
+      alert("The input is invalid!");
+      console.log("The input is invalid!");
+    } else {
+      // alert(`"Your card is selling! \nPrice: ${inputVal}"`);
+      if(window.confirm(`Do you make sure to sell this card? \nPrice: ${inputVal}Wei`)) {
+        console.log(inputVal);
+        sellconfirm(contract, address, inputVal, id, close);
+        close();
+      }
+    }
+  
+  }
+
+
     return (
     <div className={classes.container}>
     <Popup

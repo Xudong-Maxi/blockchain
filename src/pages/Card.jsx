@@ -1,7 +1,7 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
 import { Img } from "react-image";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, useLocation } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
 import CardDescription from "../components/CardDescription";
@@ -50,6 +50,7 @@ const Card = (props) => {
 	const address = props.address;
 	const { id } = useParams();
 	const classes = useStyles();
+	const { pathname } = useLocation();
 	//const { card } = CARD;
 	const { card } = useCard(id);
 	if (!card) return <Loading middle />;
@@ -101,6 +102,7 @@ const Card = (props) => {
 				contract = {contract}
 				address = {address}
 				id = {id}
+				pathname = {pathname}
 			/>
 		</div>
 		
