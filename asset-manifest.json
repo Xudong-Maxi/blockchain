@@ -1,30 +1,30 @@
 {
   "files": {
     "main.css": "/blockchain/static/css/main.7440b0dc.css",
-    "main.js": "/blockchain/static/js/main.0acea935.js",
-    "static/js/988.8db44c8f.chunk.js": "/blockchain/static/js/988.8db44c8f.chunk.js",
+    "main.js": "/blockchain/static/js/main.6ad6140a.js",
+    "static/js/787.5bbf815b.chunk.js": "/blockchain/static/js/787.5bbf815b.chunk.js",
     "static/media/background.png": "/blockchain/static/media/background.c7b45c2d5e64c20c936a.png",
     "static/media/logo.png": "/blockchain/static/media/logo.11e1fd2160340697591b.png",
     "static/media/pikachu.png": "/blockchain/static/media/pikachu.62f719d3ed9ef601ca1d.png",
     "static/media/METAMASK.png": "/blockchain/static/media/METAMASK.b52147f5d62d57855c5e.png",
-    "static/media/Dragon.svg": "/blockchain/static/media/Dragon.ad58eb2baaaebe0868bd20a120bc68c2.svg",
-    "static/media/Fire.svg": "/blockchain/static/media/Fire.2a1a2466bba350e09d83684c6e7a0b14.svg",
-    "static/media/Psychic.svg": "/blockchain/static/media/Psychic.9579a20dfdd465bda3b9fdd28a4aac69.svg",
-    "static/media/Fairy.svg": "/blockchain/static/media/Fairy.483b9ec93b8ba31e85c4a3dc0f274075.svg",
-    "static/media/Fighting.svg": "/blockchain/static/media/Fighting.4eacd1b648f34d7480b96da1f6fcba64.svg",
-    "static/media/Metal.svg": "/blockchain/static/media/Metal.05d3cb5e0a98af33d2ac28c373ba4df3.svg",
+    "static/media/Dragon.svg": "/blockchain/static/media/Dragon.9d32757b191cbbaea8d4d418ff5d4ed3.svg",
+    "static/media/Fire.svg": "/blockchain/static/media/Fire.e0bd7fcab2121e7ac1ffbbe09a3ca5dd.svg",
+    "static/media/Psychic.svg": "/blockchain/static/media/Psychic.67439878eaa68ee726de9944c7ff9757.svg",
+    "static/media/Fairy.svg": "/blockchain/static/media/Fairy.767c2f5699eb5f1120f19c7a76b41a1a.svg",
+    "static/media/Fighting.svg": "/blockchain/static/media/Fighting.f20d1bd24f0cde62bb378b672f0178aa.svg",
+    "static/media/Metal.svg": "/blockchain/static/media/Metal.cb91a92a3b5197e2cf61bc66592f42d1.svg",
     "index.html": "/blockchain/index.html",
-    "static/media/Darkness.svg": "/blockchain/static/media/Darkness.6c7b71ae48674d8e3f3c6d0de6d1b1c4.svg",
-    "static/media/Water.svg": "/blockchain/static/media/Water.87034977635c8c02c1802a3c8fd5d863.svg",
-    "static/media/Lightning.svg": "/blockchain/static/media/Lightning.e7badb5d85f1824fd4d233242cbde328.svg",
+    "static/media/Darkness.svg": "/blockchain/static/media/Darkness.27fdc7ed2bd3294b9838b1882c20e225.svg",
+    "static/media/Water.svg": "/blockchain/static/media/Water.b6d13329535e4be9e9b4f8da4694faba.svg",
+    "static/media/Lightning.svg": "/blockchain/static/media/Lightning.bc35c5a3faf04b605c00967b94e93693.svg",
     "static/media/Grass.svg": "/blockchain/static/media/Grass.e09623e3345d5bf5286f5323dd923c60.svg",
-    "static/media/Colorless.svg": "/blockchain/static/media/Colorless.2d254b2a2162c24e732daefc0cba478f.svg",
+    "static/media/Colorless.svg": "/blockchain/static/media/Colorless.2ba66dd583ebf70eb414a0cfd20a48be.svg",
     "main.7440b0dc.css.map": "/blockchain/static/css/main.7440b0dc.css.map",
-    "main.0acea935.js.map": "/blockchain/static/js/main.0acea935.js.map",
-    "988.8db44c8f.chunk.js.map": "/blockchain/static/js/988.8db44c8f.chunk.js.map"
+    "main.6ad6140a.js.map": "/blockchain/static/js/main.6ad6140a.js.map",
+    "787.5bbf815b.chunk.js.map": "/blockchain/static/js/787.5bbf815b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7440b0dc.css",
-    "static/js/main.0acea935.js"
+    "static/js/main.6ad6140a.js"
   ]
 }
