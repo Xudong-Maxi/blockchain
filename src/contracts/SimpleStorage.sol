@@ -40,9 +40,9 @@ contract UserDataContract {
 
     ///function to add a new user
     function addUser() public {
-
         UserData storage userData = users[msg.sender];
         userData.userAddress = msg.sender;
+        userData.cards.push('base5-60');    //send a card to the user's home
         userCount += 1;
         allUserAddresses.push(msg.sender);
     }
