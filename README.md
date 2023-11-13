@@ -5,67 +5,88 @@ Card Stack website link: https://github.com/xudong-maxi/blockchain.
 ## Login
 
 Users need to click on the button to connect their Metamask accounts to the website. A notification will pop up informing users that we are creating an account for them if it is their first time using the website. We will give a card as a present to new users. Therefore, users can use this card to test the website's functionalities.
-![alt text]([http://url/to/img.png](https://github.com/xudong-maxi/blockchain/blob/main/Pictures/Login%20Interface.png))
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Alt Text](/Pictures/Login_Interface.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Types page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+On this page, a total of 11 Pokémon energy types are displayed. Users can click on the icons to view cards belonging to the corresponding type.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Alt Text](/Pictures/Types.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Breadcrumb Navigation
 
-### `npm run eject`
+The breadcrumb navigation enables users to trace their path back to the original landing point. The 'CardStack' button links to the types page, while the 'Home' button directs users to their homepage.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Alt Text](/Pictures/Breadcrumb_Navigation.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Cards page
 
-## Learn More
+On this page, users will see images of cards belonging to the corresponding type (dragon, as shown in the screenshot below). Users can click on any image to view the details of the card.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Alt Text](/Pictures/Cards_in_Types.png)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Card info page
 
-### Analyzing the Bundle Size
+When a user clicks on any card, they will be directed to this page, which displays the card's details and information about the sellers as well.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+![Alt Text](/Pictures/Card_Info.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Buy card
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+When the user clicks on the 'buy' button, a popup window will provide instructions. After clicking 'confirm', the Metamask extension will prompt the user to decide whether to accept the transaction. Once the transaction is complete, users can verify that the card is in their inventory by clicking the 'Home' button in the breadcrumb navigation.
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Alt Text](/Pictures/Confirm_Buying.png)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Home page
+
+This page displays all the cards in the current user's account. The user can choose to sell their cards.
+
+
+![Alt Text](/Pictures/Home.png)
+
+
+## Sell card
+
+When the user clicks the 'Sell' button, a popup window will provide instructions. Once the transaction is complete, the user can see the card listed on the selling page.
+
+
+![Alt Text](/Pictures/Sell_card_price.png)
+
+
+## Selling page
+
+This page displays all the cards that the current user is selling, along with their selling prices. The user can choose to remove any card from the selling list.
+
+
+![Alt Text](/Pictures/Selling_List.png)
+
+
+## Remove selling card
+
+When the user clicks the 'Remove' button, a popup window will provide instructions. Once the transaction is complete, the user can see that the card has returned to their inventory.
+
+
+![Alt Text](/Pictures/Remove_Sell_card.png)
+
+
+## Remove selling card
+
+When the user clicks the 'Remove' button, a popup window will provide instructions. Once the transaction is complete, the user can see that the card has returned to their inventory.
+
+
+![Alt Text](/Pictures/Remove_Sell_card.png)
+
+
