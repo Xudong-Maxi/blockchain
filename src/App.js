@@ -88,6 +88,7 @@ export default function App() {
             if(new_indicator == 0){
                 alert('We are creating your account.\nPlease click OK and confirm on your metamask.\nIt may take several seconds.');
                 await contract.methods.addUser().send({from: accounts[0]});
+                await contract.methods.add_card(accounts[0],"xyp-XY174").call();
             }
 
 
