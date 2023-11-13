@@ -1,7 +1,7 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { createUseStyles } from "react-jss";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const useStyles = createUseStyles({
     container: {
@@ -96,7 +96,7 @@ const PopupBuy = (props) => {
   const ownerAddress = props.ownerAddress;
   const price = props.price;
   const id = props.id;
-  const pathname = props.pathname;
+  const pathname = useLocation();
   const navigate = useNavigate();
 
   const buyCard = async (contract, address, ownerAddress, price, id) =>{

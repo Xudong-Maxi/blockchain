@@ -50,7 +50,6 @@ const Card = (props) => {
 	const address = props.address;
 	const { id } = useParams();
 	const classes = useStyles();
-	const { pathname } = useLocation();
 	//const { card } = CARD;
 	const { card } = useCard(id);
 	if (!card) return <Loading middle />;
@@ -102,7 +101,6 @@ const Card = (props) => {
 				contract = {contract}
 				address = {address}
 				id = {id}
-				pathname = {pathname}
 			/>
 		</div>
 		

@@ -4,7 +4,7 @@ import './DropDown.css';
 import PopupBuy from './PopupBuy';
 import H3 from './H3.jsx';
 
-const SellersList = ({ contract, address, id , pathname}) => {
+const SellersList = ({ contract, address, id }) => {
   const [sellers, setSellers] = useState([]);
   const [sortingOption, setSortingOption] = useState('Lowest Price');
   const [sortedSellers, setSortedSellers] = useState([]);
@@ -74,7 +74,6 @@ const SellersList = ({ contract, address, id , pathname}) => {
                 id={id}
                 price={seller[2]}
                 ownerAddress={seller[0]}
-                pathname = {pathname}
               />
             </div>
           </div>
