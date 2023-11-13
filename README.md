@@ -82,11 +82,6 @@ When the user clicks the 'Remove' button, a popup window will provide instructio
 ![Alt Text](/Pictures/Remove_Sell_card.png)
 
 
-## Remove selling card
 
-When the user clicks the 'Remove' button, a popup window will provide instructions. Once the transaction is complete, the user can see that the card has returned to their inventory.
-
-
-![Alt Text](/Pictures/Remove_Sell_card.png)
 
 
