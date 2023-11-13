@@ -1,6 +1,7 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { createUseStyles } from "react-jss";
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = createUseStyles({
     container: {
@@ -87,21 +88,7 @@ const useStyles = createUseStyles({
     },
 });
 
-const handleConfirm = async (contract, address, ownerAddress, price, id, close) =>{
-  try{
-    // console.log(`address: ${address}`)
-    // console.log(`owneraddress: ${ownerAddress}`)
-    // ownerAddress = ownerAddress.toLowerCase()
-    // console.log(`price: ${price}`)
-    // console.log(`lowercase owneraddress: ${ownerAddress}`)
-    const ret = await contract.methods.buy_card(id, ownerAddress,price).send({from: address, value: price});
-  }
-  catch(err){
-    alert(`Transaction canceled.`);
-  }
 
-  close();
-}
 
 const PopupBuy = (props) => {
   const contract = props.contract;
@@ -109,6 +96,28 @@ const PopupBuy = (props) => {
   const ownerAddress = props.ownerAddress;
   const price = props.price;
   const id = props.id;
+  const pathname = props.pathname;
+  const navigate = useNavigate();
+
+  const buyCard = async (contract, address, ownerAddress, price, id) =>{
+    try{
+      // console.log(`address: ${address}`)
+      // console.log(`owneraddress: ${ownerAddress}`)
+      // ownerAddress = ownerAddress.toLowerCase()
+      // console.log(`price: ${price}`)
+      // console.log(`lowercase owneraddress: ${ownerAddress}`)
+      const ret = await contract.methods.buy_card(id, ownerAddress,price).send({from: address, value: price});
+      if(ret) navigate(pathname);
+    }
+    catch(err){
+      alert(`Transaction canceled.`);
+    }
+  }
+
+  const handleConfirm = async (contract, address, ownerAddress, price, id, close) =>{
+    buyCard(contract, address, ownerAddress, price, id);
+    close();
+  }
 
   const classes = useStyles({ color:"#bf8a1a" });
     return (

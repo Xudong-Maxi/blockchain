@@ -126,6 +126,11 @@ const Inventory = (props) => {
 	const [idlist, setIdlist] = useState([]);
 	const contract = props.contract;
 	const address = props.address;
+	// const [reset, setReset] = useState(false)
+	// const [triggerRerender, setTriggerRerender] = useState(false);
+	// const handlePopupStateChange = () => {
+	// 	setTriggerRerender(prevState => !prevState); // Toggle to trigger re-render
+	//   };
 
 	const getIdList = async () => {
 		try {
@@ -195,6 +200,7 @@ const Inventory = (props) => {
 								contract={contract}
 								address={address}
 								id={id}
+								// onStateChange={handlePopupStateChange}
 							/>
 						</div>
 					</li>

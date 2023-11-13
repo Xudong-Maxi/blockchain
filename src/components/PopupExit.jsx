@@ -2,6 +2,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 // import ButtonSell from "../ButtonSell"
 import { createUseStyles } from "react-jss";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const useStyles = createUseStyles({
     container: {
@@ -84,22 +85,30 @@ const useStyles = createUseStyles({
     },
 });
 
-const handleConfirm = async (contract, address, price, id, close) =>{
-  try{
-    const ret = await contract.methods.abort_sale_card(id,price).send({from: address});
-  }
-  catch(err){
-    alert("Transaction canceled.");
-  }
-
-  close();
-}
 
 const PopupExit = (props) => {
   const contract = props.contract;
   const address = props.address;
   const price = props.price;
   const id = props.id;
+  const navigate = useNavigate();
+  const pathname = useLocation();
+
+  const cancelSale = async (contract, address, price, id) => {
+    try{
+      const ret = await contract.methods.abort_sale_card(id,price).send({from: address});
+      if (ret) navigate(pathname);
+    }
+    catch(err){
+      alert(`Transaction canceled.`);
+    }
+  }
+
+  const handleConfirm = async (contract, address, price, id, close) =>{
+    cancelSale(contract, address, price, id);
+    close();
+  }
+  
 
   const classes = useStyles({ color:"#bf8a1a" });
     return (
