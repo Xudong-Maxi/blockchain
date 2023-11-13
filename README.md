@@ -1,6 +1,6 @@
 # Getting Started with Card Stack
 
-Card Stack website link: https://github.com/xudong-maxi/blockchain.
+Card Stack website link: [https://github.com/xudong-maxi/blockchain](https://xudong-maxi.github.io/blockchain).
 
 ## Login
 
