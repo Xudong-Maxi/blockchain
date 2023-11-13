@@ -1,10 +1,11 @@
-# Getting Started with Create React App
+# Getting Started with Card Stack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Card Stack website link: https://github.com/xudong-maxi/blockchain.
 
-## Available Scripts
+## Login
 
-In the project directory, you can run:
+Users need to click on the button to connect their Metamask accounts to the website. A notification will pop up informing users that we are creating an account for them if it is their first time using the website. We will give a card as a present to new users. Therefore, users can use this card to test the website's functionalities.
+![alt text]([http://url/to/img.png](https://github.com/xudong-maxi/blockchain/blob/main/Pictures/Login%20Interface.png))
 
 ### `npm start`
 
