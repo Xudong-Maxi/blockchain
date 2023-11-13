@@ -12,18 +12,7 @@ const useStyles = createUseStyles({
         textAlign: "center", // Ensure Breadcrumb stays centered
 	},
 
-	cardstack: {
-        position: "absolute",
-        left: "6rem",
-        top: "1.6rem",
-        transform: "translateY(-50%)",
-		zIndex: 5,
-		fontFamily: 'Pokemon Solid',
-		transition: "transform 0.3s ease",
-		'&:hover': { 
-			color: "red", // Example hover color change
-		},
-	}
+
     })
 
 
@@ -62,11 +51,6 @@ function Header() {
 
 	return (
 		<div className={classes.container}>
-			<Link to = '/blockchain/Types'>
-				<div className={classes.cardstack}>
-					CardStack
-				</div>
-			</Link>
 			<Breadcrumb list={path} pathname={pathname} /> 
 		</div>
 	);

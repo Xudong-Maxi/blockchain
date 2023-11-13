@@ -64,6 +64,18 @@ const useStyles = createUseStyles({
 		height:"1.5em",
 		marginBottom: "0",
 	},
+	cardstack: {
+        position: "absolute",
+        left: "6rem",
+        top: "1.6rem",
+        transform: "translateY(-50%)",
+		zIndex: 5,
+		fontFamily: 'Pokemon Solid',
+		transition: "transform 0.3s ease",
+		'&:hover': { 
+			color: "red", // Example hover color change
+		},
+	},
 	current: {
 		fontSize: "0.8rem",
 		"&:after": {
@@ -81,6 +93,11 @@ function Breadcrumb({ pathname, list }) {
 		<div>
 			<div className={classes.container}>
 			<ul className={classes.ul}>
+				<Link to = '/blockchain/Types'>
+					<div className={classes.cardstack}>
+						CardStack
+					</div>
+				</Link>
 				{list.map((p) => {
 					const current = pathname === p.url;
 					return (
